@@ -153,24 +153,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div style="display: flex; margin-bottom: 6px; align-items: center;">
                         <span style="color: #3b82f6; margin-right: 8px;">•</span>
                         <div>
-                            <div style="font-size: 10pt; font-weight: 500; color: #1f2937;">Google Associate Android Developer</div>
-                            <div style="font-size: 9pt; color: #6b7280;">2022</div>
+                            <div style="font-size: 10pt; font-weight: 500; color: #1f2937;">Building AI Powered Chatbots Without Programming</div>
+                            <div style="font-size: 9pt; color: #6b7280;">IBM (2024)</div>
                         </div>
                     </div>
                     
                     <div style="display: flex; margin-bottom: 6px; align-items: center;">
                         <span style="color: #3b82f6; margin-right: 8px;">•</span>
                         <div>
-                            <div style="font-size: 10pt; font-weight: 500; color: #1f2937;">Azure Fundamentals AZ-900</div>
-                            <div style="font-size: 9pt; color: #6b7280;">2021</div>
+                            <div style="font-size: 10pt; font-weight: 500; color: #1f2937;">Introduction to Packet Tracer</div>
+                            <div style="font-size: 9pt; color: #6b7280;">Cisco (2024)</div>
                         </div>
                     </div>
                     
                     <div style="display: flex; margin-bottom: 6px; align-items: center;">
                         <span style="color: #3b82f6; margin-right: 8px;">•</span>
                         <div>
-                            <div style="font-size: 10pt; font-weight: 500; color: #1f2937;">TOEIC - 925 points</div>
-                            <div style="font-size: 9pt; color: #6b7280;">2020</div>
+                            <div style="font-size: 10pt; font-weight: 500; color: #1f2937;">HTML and CSS in Depth</div>
+                            <div style="font-size: 9pt; color: #6b7280;">Meta (2023)</div>
                         </div>
                     </div>
                 </div>
@@ -717,6 +717,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize the certificates pagination
 function initCertificatesPagination() {
+    // Remove the fake certificates and only include the ones you actually have
     const certificates = [
         { title: "Building AI Powered Chatbots Without Programming", issuer: "IBM", year: "2024" },
         { title: "Introduction to Packet Tracer", issuer: "Cisco", year: "2024" },
@@ -725,7 +726,7 @@ function initCertificatesPagination() {
         { title: "Python for Data Science, AI & Development", issuer: "IBM", year: "2023" },
         { title: "HTML and CSS in Depth", issuer: "Meta", year: "2023" },
         { title: "Programming in Python", issuer: "Meta", year: "2023" },
-        { title: "Programming with Java Script", issuer: "Meta", year: "2023" },
+        { title: "Programming with JavaScript", issuer: "Meta", year: "2023" },
         { title: "React Basics", issuer: "Meta", year: "2023" },
         { title: "Introduction to Front-End Development", issuer: "Meta", year: "2023" },
         { title: "Work Smarter with Microsoft Excel", issuer: "Microsoft", year: "2023" },
@@ -734,10 +735,8 @@ function initCertificatesPagination() {
         { title: "JavaScript Essentials 1", issuer: "Cisco", year: "2023" },
         { title: "Python 101 for Data Science", issuer: "IBM", year: "2023" },
         { title: "Web Development Fundamentals", issuer: "IBM", year: "2023" },
-        { title: "Certyfikat Umiejętności Jutra", issuer: "Google", year: "2023" },
-        { title: "Google Associate Android Developer", issuer: "Google", year: "2022" },
-        { title: "Azure Fundamentals AZ-900", issuer: "Microsoft", year: "2021" },
-        { title: "TOEIC - 925 points", issuer: "ETS", year: "2020" }
+        { title: "Certyfikat Umiejętności Jutra", issuer: "Google", year: "2023" }
+        // Removed fake certificates: Google Associate Android Developer, Azure Fundamentals AZ-900, TOEIC
     ];
     
     const certificatesContainer = document.getElementById('certificates-container');
@@ -751,7 +750,7 @@ function initCertificatesPagination() {
     const totalPages = Math.ceil(certificates.length / itemsPerPage);
     let currentPage = 0;
     
-    // Create pages of certificates
+    // Create pages of certificates - ultra-compact format with larger text and no wasted space
     const pages = [];
     for (let i = 0; i < totalPages; i++) {
         const start = i * itemsPerPage;
@@ -763,13 +762,15 @@ function initCertificatesPagination() {
         
         pageItems.forEach(cert => {
             const certElement = document.createElement('div');
-            certElement.className = 'p-3 rounded-xl project-card';
+            certElement.className = 'rounded-xl project-card';
+            
+            // Ultra compact layout with absolutely zero space under company name and larger text
             certElement.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white my-auto">${cert.title}</h3>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm my-auto ml-2">${cert.year}</p>
+                <div class="flex justify-between items-center w-full">
+                    <h3 class="font-medium text-gray-800 dark:text-white truncate">${cert.title}</h3>
+                    <p class="text-gray-600 dark:text-gray-400 flex-shrink-0 ml-auto">${cert.year}</p>
                 </div>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">${cert.issuer}</p>
+                <p class="cert-issuer text-gray-600 dark:text-gray-400">${cert.issuer}</p>
             `;
             pageElement.appendChild(certElement);
         });
@@ -778,16 +779,11 @@ function initCertificatesPagination() {
         certificatesContainer.appendChild(pageElement);
     }
     
-    // Create pagination dots
-    for (let i = 0; i < totalPages; i++) {
-        const dot = document.createElement('div');
-        dot.className = `cert-page-dot ${i === 0 ? 'active' : ''}`;
-        dot.dataset.page = i;
-        dot.addEventListener('click', () => {
-            goToPage(i);
-        });
-        paginationContainer.appendChild(dot);
-    }
+    // Create pagination info
+    const pageInfo = document.createElement('div');
+    pageInfo.className = 'text-center';
+    pageInfo.innerHTML = `<span id="current-page">1</span>/${totalPages}`;
+    paginationContainer.appendChild(pageInfo);
     
     // Update button states
     updateButtons();
@@ -820,11 +816,8 @@ function initCertificatesPagination() {
             }
         });
         
-        // Update pagination dots
-        const dots = paginationContainer.querySelectorAll('.cert-page-dot');
-        dots.forEach((dot, index) => {
-            dot.className = `cert-page-dot ${index === pageIndex ? 'active' : ''}`;
-        });
+        // Update current page indicator
+        document.getElementById('current-page').textContent = pageIndex + 1;
         
         currentPage = pageIndex;
         updateButtons();
@@ -834,6 +827,9 @@ function initCertificatesPagination() {
     function updateButtons() {
         prevButton.disabled = currentPage === 0;
         nextButton.disabled = currentPage === totalPages - 1;
+        
+        prevButton.classList.toggle('opacity-50', currentPage === 0);
+        nextButton.classList.toggle('opacity-50', currentPage === totalPages - 1);
     }
 }
 

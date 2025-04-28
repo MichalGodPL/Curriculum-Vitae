@@ -1018,8 +1018,9 @@ section:hover h2::after {
 /* Certificate section pagination styling */
 .certificates-container {
   position: relative;
-  min-height: 272px; /* Height for 4 certificates */
+  min-height: 310px; /* Keep container height */
   overflow: hidden;
+  padding: 0 !important;
 }
 
 .certificate-page {
@@ -1028,6 +1029,7 @@ section:hover h2::after {
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
   pointer-events: none;
+  transform: translateX(10%);
 }
 
 .certificate-page.active {
@@ -1038,17 +1040,20 @@ section:hover h2::after {
 
 .certificate-page.prev {
   transform: translateX(-10%);
+  opacity: 0;
 }
 
 .certificate-page.next {
   transform: translateX(10%);
+  opacity: 0;
 }
 
 #prev-cert, #next-cert {
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-#prev-cert:hover, #next-cert:hover {
+#prev-cert:hover:not(:disabled), #next-cert:hover:not(:disabled) {
   background-color: var(--primary);
   color: white;
   border-color: var(--primary);
@@ -1057,6 +1062,255 @@ section:hover h2::after {
 #prev-cert:disabled, #next-cert:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+#cert-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+/* Ensure each certificate card has consistent height */
+.certificates-container .project-card {
+  margin-bottom: 0.25rem; /* Even smaller margin between cards */
+  min-height: auto; /* Remove fixed height */
+  padding: 0.25rem 0.5rem; /* Further reduce padding */
+  display: flex;
+  flex-direction: column;
+}
+
+.certificates-container .project-card:last-child {
+  margin-bottom: 0;
+}
+
+.certificates-container .project-card h3 {
+  font-size: 0.87rem; /* Slightly larger font for title */
+  line-height: 1.05; /* Very tight line height */
+  margin-bottom: 0; /* Remove bottom margin */
+  margin-right: 0.3rem; /* Less margin to save space */
+  font-weight: 500; /* Medium weight for better readability */
+  max-width: 80%; /* Control width */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis for long text */
+}
+
+.certificates-container .project-card p {
+  margin-top: 0;
+  margin-bottom: 0; /* Remove bottom margin entirely */
+  font-size: 0.75rem; /* Slightly larger issuer text */
+  line-height: 1; /* Extremely tight line height */
+  opacity: 0.8; /* Slightly transparent for visual hierarchy */
+}
+
+/* Container-specific styling for ultra-compact layout */
+.certificates-container .flex {
+  gap: 0 !important; /* Remove gap */
+  align-items: center !important; /* Center align items */
+}
+
+.certificates-container .justify-between {
+  margin-bottom: 0 !important; /* Remove bottom margin */
+}
+
+/* Remove any excess padding in certificate containers */
+.certificates-container {
+  padding: 0 !important;
+}
+
+#certificates .card-hover {
+  padding-bottom: 0.5rem !important; /* Further reduce bottom padding in container */
+}
+
+#cert-pagination {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.cert-page-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-page-dot.active {
+  background-color: var(--primary);
+  transform: scale(1.2);
+}
+
+/* Ensure each certificate card has consistent height */
+.certificates-container .project-card {
+  margin-bottom: 0.3rem; /* Further reduce margin between cards */
+  min-height: auto; /* Remove fixed height */
+  padding: 0.3rem 0.5rem; /* Further reduce padding */
+  display: flex;
+  flex-direction: column;
+}
+
+.certificates-container .project-card:last-child {
+  margin-bottom: 0;
+}
+
+.certificates-container .project-card h3 {
+  font-size: 0.85rem; /* Slightly larger font for title */
+  line-height: 1.05; /* Even tighter line height */
+  margin-bottom: 0; /* Remove bottom margin */
+  margin-right: 0.3rem; /* Less margin to save space */
+  font-weight: 500; /* Medium weight for better readability */
+  max-width: 80%; /* Control width */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis for long text */
+}
+
+.certificates-container .project-card p {
+  margin-top: 0;
+  font-size: 0.7rem; /* Keep issuer text small */
+  line-height: 1.05; /* Tighter line height */
+  opacity: 0.8; /* Slightly transparent for visual hierarchy */
+}
+
+/* Container-specific styling for more compact layout */
+.certificates-container .flex {
+  gap: 0 !important; /* Remove gap */
+  align-items: center !important; /* Center align items */
+}
+
+.certificates-container .justify-between {
+  margin-bottom: 0 !important; /* Remove bottom margin */
+}
+
+/* Remove any excess padding in certificate containers */
+.certificates-container {
+  padding: 0 !important;
+}
+
+#certificates .card-hover {
+  padding-bottom: 0.75rem !important; /* Reduce bottom padding in container */
+}
+
+#cert-pagination {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.cert-page-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-page-dot.active {
+  background-color: var(--primary);
+  transform: scale(1.2);
+}
+
+/* Certificate section - Ultra compact with larger text */
+.certificates-container .project-card {
+  margin-bottom: 0.2rem; /* Minimal margin between cards */
+  min-height: auto;
+  padding: 0.2rem 0.4rem; /* Reduced padding */
+  display: flex;
+  flex-direction: column;
+}
+
+.certificates-container .project-card:last-child {
+  margin-bottom: 0;
+}
+
+.certificates-container .project-card h3 {
+  font-size: 0.95rem; /* Larger font size */
+  line-height: 1; /* Extremely tight line height */
+  margin-bottom: 0; /* No margin */
+  font-weight: 500;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.certificates-container .project-card p {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 0.78rem; /* Larger font size */
+  line-height: 1; /* Extremely tight line height */
+  opacity: 0.9; /* Less transparent for better readability */
+}
+
+.certificates-container .flex {
+  gap: 0 !important;
+  align-items: center !important;
+}
+
+.certificates-container .justify-between {
+  margin-bottom: 0 !important;
+}
+
+/* Certificate section - Ultra compact with larger text and zero space below issuer */
+.certificates-container .project-card {
+  margin-bottom: 0.15rem; /* Minimal margin between cards */
+  min-height: auto;
+  padding: 0.15rem 0.3rem; /* Even more reduced padding */
+  display: flex;
+  flex-direction: column;
+}
+
+.certificates-container .project-card:last-child {
+  margin-bottom: 0;
+}
+
+.certificates-container .project-card h3 {
+  font-size: 1.05rem !important; /* Much larger font size */
+  line-height: 1 !important; /* Tightest possible line height */
+  margin-bottom: 0 !important; /* No margin */
+  margin-top: 0 !important; /* No margin */
+  padding: 0 !important; /* No padding */
+  font-weight: 600 !important; /* Bolder text */
+  max-width: 75% !important; /* Control width */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.certificates-container .project-card p {
+  margin: 0 !important; /* Zero margin */
+  padding: 0 !important; /* Zero padding */
+  line-height: 1 !important; /* Tightest possible line height */
+}
+
+.certificates-container .project-card p.cert-issuer {
+  font-size: 0.85rem !important; /* Larger issuer text */
+  opacity: 0.95 !important; /* More visible */
+  font-weight: 500 !important; /* Medium weight for better readability */
+}
+
+.certificates-container .project-card .flex {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Container-specific styling for ultra-compact layout */
+.certificates-container .flex {
+  gap: 0 !important; /* Remove gap */
+  align-items: center !important; /* Center align items */
+}
+
+.certificates-container .justify-between {
+  margin-bottom: 0 !important; /* Remove bottom margin */
+}
+
+/* Eliminate all possible spacing in certificate container */
+#certificates .card-hover {
+  padding-bottom: 0.25rem !important; /* Minimal bottom padding */
 }
 
 #cert-pagination {
