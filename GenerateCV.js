@@ -1,51 +1,48 @@
 // Enhanced PDF Download Functionality
 export const setupPdfDownload = function() {
-    const pdfButton = document.getElementById('pdf-download-hero');
+    preparePdfVersion();
     
-    if (pdfButton) {
-        pdfButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            preparePdfVersion();
-            
-            // Give the browser a moment to apply print styles
-            setTimeout(() => {
-                window.print();
-            }, 300);
-        });
-    }
+    // Give the browser a moment to apply print styles
+    setTimeout(() => {
+        window.print();
+    }, 300);
 };
 
 export const preparePdfVersion = function() {
     const pdfContent = document.getElementById('pdf-version');
     if (!pdfContent) return;
     
-    // Create a compact version of the CV for single-page PDF with enhanced styling
+    // Create a clean, simple version of the CV for single-page PDF with minimal styling
     const compactCV = document.createElement('div');
     compactCV.className = 'pdf-content';
-    compactCV.style.fontFamily = 'Montserrat, Arial, sans-serif';
-    compactCV.style.maxHeight = '290mm'; // Ensure it fits on one page
+    compactCV.style.fontFamily = 'Arial, sans-serif';
+    compactCV.style.maxHeight = '297mm'; // A4 height
+    compactCV.style.width = '210mm'; // A4 width
     compactCV.style.padding = '0';
+    compactCV.style.margin = '0 auto';
     compactCV.style.overflow = 'hidden';
+    compactCV.style.position = 'relative';
+    compactCV.style.backgroundColor = 'white';
+    compactCV.style.color = 'black';
     
-    // Clean, modern header
+    // Simple header with no background color
     const header = document.createElement('div');
-    header.style.background = 'linear-gradient(135deg, #3b82f6, #2563eb)';
-    header.style.padding = '20px';
-    header.style.color = 'white';
-    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    header.style.padding = '6px 15px';
+    header.style.color = 'black';
+    header.style.borderBottom = '1px solid #ddd';
     
     header.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <h1 style="font-size: 24pt; font-weight: 700; margin: 0; color: white;">Michał Szymański</h1>
-                <p style="font-size: 12pt; margin: 5px 0 0 0; color: #f0f9ff; font-weight: 300;">Frontend Developer</p>
+                <h1 style="font-size: 14pt; font-weight: 600; margin: 0; color: black;">Michał Szymański</h1>
+                <p style="font-size: 9pt; margin: 1px 0 0 0; color: black; font-weight: 400;">AGH UST Student</p>
             </div>
-            <div style="text-align: right; font-size: 9pt; color: #f0f9ff;">
-                <div style="margin-bottom: 5px;"><i class="fas fa-envelope" style="width: 15px;"></i> mszymanski@student.agh.edu.pl</div>
-                <div style="margin-bottom: 5px;"><i class="fas fa-phone" style="width: 15px;"></i> +48 123 456 789</div>
-                <div style="margin-bottom: 5px;"><i class="fas fa-map-marker-alt" style="width: 15px;"></i> Kraków, Poland</div>
-                <div style="margin-bottom: 5px;"><i class="fab fa-github" style="width: 15px;"></i> github.com/mszymanski</div>
-                <div><i class="fab fa-linkedin" style="width: 15px;"></i> linkedin.com/in/mszymanski</div>
+            <div style="text-align: right; font-size: 8pt; color: black;">
+                <div style="margin-bottom: 1px;"><i class="fas fa-envelope" style="width: 12px;"></i> mszymanski@student.agh.edu.pl</div>
+                <div style="margin-bottom: 1px;"><i class="fas fa-phone" style="width: 12px;"></i> +48 731 835 644</div>
+                <div style="margin-bottom: 1px;"><i class="fas fa-map-marker-alt" style="width: 12px;"></i> Kraków, Poland</div>
+                <div style="margin-bottom: 1px;"><i class="fab fa-github" style="width: 12px;"></i> github.com/MichalGodPL</div>
+                <div><i class="fab fa-linkedin" style="width: 12px;"></i> linkedin.com/in/Michal-Szymanski-Student</div>
             </div>
         </div>
     `;
@@ -55,434 +52,295 @@ export const preparePdfVersion = function() {
     // Create main grid layout
     const mainContent = document.createElement('div');
     mainContent.style.display = 'grid';
-    mainContent.style.gridTemplateColumns = '32% 68%';
-    mainContent.style.gap = '15px';
-    mainContent.style.padding = '15px';
+    mainContent.style.gridTemplateColumns = '30% 70%';
+    mainContent.style.gap = '12px';
+    mainContent.style.padding = '12px';
+    compactCV.appendChild(mainContent);
     
     const leftColumn = document.createElement('div');
     const rightColumn = document.createElement('div');
     
     mainContent.appendChild(leftColumn);
     mainContent.appendChild(rightColumn);
-    compactCV.appendChild(mainContent);
     
-    // LEFT COLUMN CONTENT
+    // LEFT COLUMN CONTENT - Simple and clean design
     
-    // Education Section
-    const educationSection = document.getElementById('education');
-    if (educationSection) {
-        const educationClone = document.createElement('div');
-        educationClone.style.marginBottom = '20px';
-        
-        educationClone.innerHTML = `
-            <h2 style="font-size: 14pt; color: #2563eb; margin: 0 0 10px 0; padding-bottom: 5px; border-bottom: 2px solid #3b82f6;">
+    // Education Section - No colors, simple borders
+    const educationHTML = `
+        <div style="margin-bottom: 16px;">
+            <h2 style="font-size: 12pt; color: black; margin: 0 0 6px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd;">
                 Education
             </h2>
-            <div style="padding: 0 0 0 5px;">
-                <div style="margin-bottom: 8px;">
-                    <div style="font-weight: 600; font-size: 11pt; color: #1f2937;">Bachelor's Degree in Computer Science</div>
-                    <div style="font-size: 10pt; color: #4b5563; font-weight: 500;">AGH University of Science and Technology</div>
-                    <div style="font-size: 9pt; color: #3b82f6; margin: 2px 0;">2022 - Present</div>
-                    <div style="font-size: 9pt; color: #4b5563; line-height: 1.3; margin-top: 5px;">
+            <div style="padding-left: 2px;">
+                <div style="margin-bottom: 4px;">
+                    <div style="font-weight: 600; font-size: 9pt; color: black;">Bachelor's Degree in Computer Science in Engineering</div>
+                    <div style="font-size: 8pt; color: black; font-weight: 500;">AGH UNIVERSITY OF SCIENCE AND TECHNOLOGY, KRAKÓW</div>
+                    <div style="font-size: 8pt; color: black; margin: 1px 0;">2022 - Present</div>
+                    <div style="font-size: 8pt; color: black; line-height: 1.2; margin-top: 3px;">
                         Currently a 3rd year student pursuing a comprehensive program covering software development, 
-                        algorithms, and data structures. Focusing on practical applications with strong interest in web technologies.
+                        algorithms, and data structures with a focus on practical applications.
                     </div>
                 </div>
             </div>
-        `;
-        
-        leftColumn.appendChild(educationClone);
-    }
+        </div>
+    `;
+    leftColumn.innerHTML += educationHTML;
     
-    // Languages Section
-    const languagesSection = document.getElementById('languages');
-    if (languagesSection) {
-        const languagesClone = document.createElement('div');
-        languagesClone.style.marginBottom = '20px';
-        
-        languagesClone.innerHTML = `
-            <h2 style="font-size: 14pt; color: #2563eb; margin: 0 0 10px 0; padding-bottom: 5px; border-bottom: 2px solid #3b82f6;">
+    // Languages Section - Simple text list without bars
+    const languagesHTML = `
+        <div style="margin-bottom: 16px;">
+            <h2 style="font-size: 12pt; color: black; margin: 0 0 6px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd;">
                 Languages
             </h2>
-            <div style="padding: 0 0 0 5px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                    <span style="font-size: 10pt; color: #1f2937;">Polish</span>
-                    <span style="font-size: 10pt; color: #1f2937;">Native</span>
+            <div style="padding-left: 2px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span style="font-size: 9pt; color: black;">Polish</span>
+                    <span style="font-size: 9pt; color: black;">Native</span>
                 </div>
-                <div style="width: 100%; height: 6px; background: #e5e7eb; border-radius: 3px; margin-bottom: 10px;">
-                    <div style="width: 100%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 3px;"></div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span style="font-size: 9pt; color: black;">English</span>
+                    <span style="font-size: 9pt; color: black;">B2+</span>
                 </div>
-                
-                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                    <span style="font-size: 10pt; color: #1f2937;">English</span>
-                    <span style="font-size: 10pt; color: #1f2937;">C1</span>
-                </div>
-                <div style="width: 100%; height: 6px; background: #e5e7eb; border-radius: 3px; margin-bottom: 10px;">
-                    <div style="width: 85%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 3px;"></div>
-                </div>
-                
-                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                    <span style="font-size: 10pt; color: #1f2937;">German</span>
-                    <span style="font-size: 10pt; color: #1f2937;">A2</span>
-                </div>
-                <div style="width: 100%; height: 6px; background: #e5e7eb; border-radius: 3px; margin-bottom: 10px;">
-                    <div style="width: 35%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 3px;"></div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span style="font-size: 9pt; color: black;">German</span>
+                    <span style="font-size: 9pt; color: black;">A2</span>
                 </div>
             </div>
-        `;
-        
-        leftColumn.appendChild(languagesClone);
-    }
+        </div>
+    `;
+    leftColumn.innerHTML += languagesHTML;
     
-    // Certificates Section
-    const certificatesSection = document.getElementById('certificates');
-    if (certificatesSection) {
-        const certificatesClone = document.createElement('div');
-        certificatesClone.style.marginBottom = '20px';
-        
-        certificatesClone.innerHTML = `
-            <h2 style="font-size: 14pt; color: #2563eb; margin: 0 0 10px 0; padding-bottom: 5px; border-bottom: 2px solid #3b82f6;">
+    // Certificates Section - Clean and simple bullets
+    const certificatesHTML = `
+        <div style="margin-bottom: 16px;">
+            <h2 style="font-size: 12pt; color: black; margin: 0 0 6px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd;">
                 Certificates
             </h2>
-            <div style="padding: 0 0 0 5px;">
-                <div style="display: flex; margin-bottom: 6px; align-items: center;">
-                    <span style="color: #3b82f6; margin-right: 8px;">•</span>
+            <div style="padding-left: 2px; font-size: 8pt;">
+                <div style="display: flex; margin-bottom: 3px; align-items: center;">
+                    <span style="color: black; margin-right: 4px; font-size: 9pt;">•</span>
                     <div>
-                        <div style="font-size: 10pt; font-weight: 500; color: #1f2937;">Building AI Powered Chatbots Without Programming</div>
-                        <div style="font-size: 9pt; color: #6b7280;">IBM (2024)</div>
+                        <div style="font-weight: 500; color: black;">Building AI Powered Chatbots</div>
+                        <div style="color: black; font-size: 8pt;">IBM (2024)</div>
                     </div>
                 </div>
                 
-                <div style="display: flex; margin-bottom: 6px; align-items: center;">
-                    <span style="color: #3b82f6; margin-right: 8px;">•</span>
+                <div style="display: flex; margin-bottom: 3px; align-items: center;">
+                    <span style="color: black; margin-right: 4px; font-size: 9pt;">•</span>
                     <div>
-                        <div style="font-size: 10pt; font-weight: 500; color: #1f2937;">Introduction to Packet Tracer</div>
-                        <div style="font-size: 9pt; color: #6b7280;">Cisco (2024)</div>
+                        <div style="font-weight: 500; color: black;">Introduction to Packet Tracer</div>
+                        <div style="color: black; font-size: 8pt;">Cisco (2024)</div>
                     </div>
                 </div>
                 
-                <div style="display: flex; margin-bottom: 6px; align-items: center;">
-                    <span style="color: #3b82f6; margin-right: 8px;">•</span>
+                <div style="display: flex; margin-bottom: 3px; align-items: center;">
+                    <span style="color: black; margin-right: 4px; font-size: 9pt;">•</span>
                     <div>
-                        <div style="font-size: 10pt; font-weight: 500; color: #1f2937;">HTML and CSS in Depth</div>
-                        <div style="font-size: 9pt; color: #6b7280;">Meta (2023)</div>
+                        <div style="font-weight: 500; color: black;">HTML and CSS in Depth</div>
+                        <div style="color: black; font-size: 8pt;">Meta (2023)</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; margin-bottom: 3px; align-items: center;">
+                    <span style="color: black; margin-right: 4px; font-size: 9pt;">•</span>
+                    <div>
+                        <div style="font-weight: 500; color: black;">React Basics</div>
+                        <div style="color: black; font-size: 8pt;">Meta (2023)</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; margin-bottom: 3px; align-items: center;">
+                    <span style="color: black; margin-right: 4px; font-size: 9pt;">•</span>
+                    <div>
+                        <div style="font-weight: 500; color: black;">Artificial Intelligence Fundamentals</div>
+                        <div style="color: black; font-size: 8pt;">IBM (2023)</div>
                     </div>
                 </div>
             </div>
-        `;
-        
-        leftColumn.appendChild(certificatesClone);
-    }
+        </div>
+    `;
+    leftColumn.innerHTML += certificatesHTML;
     
-    // Interests Section
-    const interestsSection = document.getElementById('interests');
-    if (interestsSection) {
-        const interestsClone = document.createElement('div');
-        interestsClone.style.marginBottom = '20px';
-        
-        interestsClone.innerHTML = `
-            <h2 style="font-size: 14pt; color: #2563eb; margin: 0 0 10px 0; padding-bottom: 5px; border-bottom: 2px solid #3b82f6;">
+    // Interests Section - Simple comma-separated list
+    const interestsHTML = `
+        <div style="margin-bottom: 16px;">
+            <h2 style="font-size: 12pt; color: black; margin: 0 0 6px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd;">
                 Interests
             </h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 5px; padding: 0 0 0 5px;">
-                <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Mobile Development</span>
-                <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">History</span>
-                <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Machine Learning</span>
-                <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Geography</span>
-                <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Programming</span>
-                <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Biology</span>
+            <div style="padding-left: 2px; font-size: 9pt; color: black;">
+                Mobile Development, History, Machine Learning, Geography, Programming, Biology
             </div>
-        `;
-        
-        leftColumn.appendChild(interestsClone);
-    }
+        </div>
+    `;
+    leftColumn.innerHTML += interestsHTML;
     
-    // RIGHT COLUMN CONTENT
+    // RIGHT COLUMN CONTENT - Simple and clean design
     
-    // Skills Section (Completely Redesigned)
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-        const skillsClone = document.createElement('div');
-        skillsClone.style.marginBottom = '20px';
-        
-        skillsClone.innerHTML = `
-            <h2 style="font-size: 14pt; color: #2563eb; margin: 0 0 10px 0; padding-bottom: 5px; border-bottom: 2px solid #3b82f6;">
+    // Skills Section - Simple lists without fancy styling
+    const skillsHTML = `
+        <div style="margin-bottom: 16px;">
+            <h2 style="font-size: 12pt; color: black; margin: 0 0 6px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd;">
                 Skills
             </h2>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;">
                 <!-- Programming Languages -->
-                <div style="margin-bottom: 12px;">
-                    <h3 style="font-size: 11pt; font-weight: 600; color: #1f2937; margin: 0 0 8px 0;">Programming</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-                        <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                            <div style="width: 70px; font-size: 9pt; color: #4b5563;">Java</div>
-                            <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                <div style="width: 90%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                            <div style="width: 70px; font-size: 9pt; color: #4b5563;">C++</div>
-                            <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                <div style="width: 85%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                            <div style="width: 70px; font-size: 9pt; color: #4b5563;">JavaScript</div>
-                            <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                <div style="width: 80%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                            <div style="width: 70px; font-size: 9pt; color: #4b5563;">Python</div>
-                            <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                <div style="width: 75%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                            <div style="width: 70px; font-size: 9pt; color: #4b5563;">Kotlin</div>
-                            <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                <div style="width: 65%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                            </div>
-                        </div>
+                <div>
+                    <h3 style="font-size: 10pt; font-weight: 600; color: black; margin: 0 0 4px 0;">Programming Languages</h3>
+                    <div style="font-size: 9pt; color: black;">
+                        Java, JavaScript, Python, C, C++, Kotlin, PHP
                     </div>
                 </div>
                 
                 <!-- Web Development -->
-                <div style="margin-bottom: 12px;">
-                    <h3 style="font-size: 11pt; font-weight: 600; color: #1f2937; margin: 0 0 8px 0;">Web & Game Dev</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-                        <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                            <div style="width: 70px; font-size: 9pt; color: #4b5563;">HTML/CSS</div>
-                            <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                <div style="width: 95%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                            <div style="width: 70px; font-size: 9pt; color: #4b5563;">React</div>
-                            <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                <div style="width: 80%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                            <div style="width: 70px; font-size: 9pt; color: #4b5563;">Unreal</div>
-                            <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                <div style="width: 85%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                            <div style="width: 70px; font-size: 9pt; color: #4b5563;">Node.js</div>
-                            <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                <div style="width: 70%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                            </div>
-                        </div>
+                <div>
+                    <h3 style="font-size: 10pt; font-weight: 600; color: black; margin: 0 0 4px 0;">Web Development</h3>
+                    <div style="font-size: 9pt; color: black;">
+                        HTML, CSS, React, Node.js, Bootstrap, Tailwind CSS
+                    </div>
+                </div>
+                
+                <!-- Game Development -->
+                <div>
+                    <h3 style="font-size: 10pt; font-weight: 600; color: black; margin: 0 0 4px 0;">Game Development</h3>
+                    <div style="font-size: 9pt; color: black;">
+                        Unreal Engine 5, Blueprints, Unity, Game Design
+                    </div>
+                </div>
+                
+                <!-- AI & ML -->
+                <div>
+                    <h3 style="font-size: 10pt; font-weight: 600; color: black; margin: 0 0 4px 0;">AI & ML</h3>
+                    <div style="font-size: 9pt; color: black;">
+                        PyTorch, TensorFlow, AI-Based Tools, Data Analysis
                     </div>
                 </div>
             </div>
             
-            <!-- Technical skills -->
-            <div style="margin-bottom: 12px;">
-                <h3 style="font-size: 11pt; font-weight: 600; color: #1f2937; margin: 0 0 8px 0;">Technical Skills</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fee2e2; color: #991b1b; border-radius: 20px; border: 1px solid #fecaca;">GitHub</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fee2e2; color: #991b1b; border-radius: 20px; border: 1px solid #fecaca;">Linux & Bash</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #e0e7ff; color: #3730a3; border-radius: 20px; border: 1px solid #c7d2fe;">SQL</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #e0e7ff; color: #3730a3; border-radius: 20px; border: 1px solid #c7d2fe;">MariaDB</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #e0e7ff; color: #3730a3; border-radius: 20px; border: 1px solid #c7d2fe;">Computer Networks</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fef3c7; color: #92400e; border-radius: 20px; border: 1px solid #fde68a;">PyTorch</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fef3c7; color: #92400e; border-radius: 20px; border: 1px solid #fde68a;">AI-Based Tools</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fee2e2; color: #991b1b; border-radius: 20px; border: 1px solid #fecaca;">MS Office</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fee2e2; color: #991b1b; border-radius: 20px; border: 1px solid #fecaca;">Docker</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">REST API</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #dcfce7; color: #166534; border-radius: 20px; border: 1px solid #bbf7d0;">PHP</span>
+            <!-- Soft Skills in simple layout -->
+            <div style="margin-top: 6px;">
+                <h3 style="font-size: 10pt; font-weight: 600; color: black; margin: 0 0 4px 0;">Soft Skills</h3>
+                <div style="font-size: 9pt; color: black;">
+                    Fast Learning, Teamwork, Communication, Problem Solving, Creativity, Diligence, Adaptability, Time Management, Critical Thinking
                 </div>
             </div>
-            
-            <!-- Soft Skills -->
-            <div style="margin-bottom: 12px;">
-                <h3 style="font-size: 11pt; font-weight: 600; color: #1f2937; margin: 0 0 8px 0;">Soft Skills</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
-                    <div style="display: flex; align-items: center; gap: 3px;">
-                        <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                        <span style="font-size: 9pt; color: #4b5563;">Fast Learning Ability</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 3px;">
-                        <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                        <span style="font-size: 9pt; color: #4b5563;">Teamwork Skills</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 3px;">
-                        <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                        <span style="font-size: 9pt; color: #4b5563;">Strong Communication</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 3px;">
-                        <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                        <span style="font-size: 9pt; color: #4b5563;">Diligence & Commitment</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 3px;">
-                        <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                        <span style="font-size: 9pt; color: #4b5563;">Creativity & Problem-Solving</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 3px;">
-                        <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                        <span style="font-size: 9pt; color: #4b5563;">Adaptability</span>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        rightColumn.appendChild(skillsClone);
-    }
+        </div>
+    `;
+    rightColumn.innerHTML += skillsHTML;
     
-    // Experience Section
-    const experienceSection = document.getElementById('experience');
-    if (experienceSection) {
-        const experienceClone = document.createElement('div');
-        experienceClone.style.marginBottom = '20px';
-        
-        experienceClone.innerHTML = `
-            <h2 style="font-size: 14pt; color: #2563eb; margin: 0 0 10px 0; padding-bottom: 5px; border-bottom: 2px solid #3b82f6;">
+    // Experience Section - Clean and simple
+    const experienceHTML = `
+        <div style="margin-bottom: 16px;">
+            <h2 style="font-size: 12pt; color: black; margin: 0 0 6px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd;">
                 Experience
             </h2>
             
             <div>
-                <!-- Experience 1 -->
+                <!-- Mathematics Tutor -->
                 <div style="margin-bottom: 10px;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <div style="font-weight: 600; font-size: 11pt; color: #1f2937;">Mathematics Tutor</div>
-                        <div style="font-size: 9pt; color: #3b82f6;">Sept 2023 - Feb 2024</div>
+                        <div style="font-weight: 600; font-size: 10pt; color: black;">Mathematics Tutor</div>
+                        <div style="font-size: 9pt; color: black; font-weight: 400;">Sept. 2023 - Feb. 2024</div>
                     </div>
-                    <div style="font-size: 10pt; color: #4b5563; font-style: italic; margin-bottom: 3px;">GoStudent, Kraków</div>
-                    <div style="font-size: 9pt; color: #4b5563; line-height: 1.3; margin-bottom: 5px; text-align: justify;">
-                        Provided personalized mathematics tutoring to high school students through the GoStudent E-Learning Platform.
-                        Adapted teaching methods to individual student needs, helping improve problem-solving skills.
-                    </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                        <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Mathematics</span>
-                        <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">E-Learning</span>
-                        <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Teaching</span>
+                    <div style="font-size: 9pt; color: black; font-style: italic; margin-bottom: 2px;">GoStudent, Kraków</div>
+                    <div style="font-size: 9pt; color: black; line-height: 1.2; margin-bottom: 3px; text-align: justify;">
+                        Provided personalized mathematics tutoring to high school students through the GoStudent E-Learning Platform. 
+                        Adapted teaching methods to individual student needs, helping them improve problem solving skills.
                     </div>
                 </div>
                 
-                <!-- Experience 2 -->
-                <div style="margin-bottom: 10px;">
+                <!-- Code Industry -->
+                <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <div style="font-weight: 600; font-size: 11pt; color: #1f2937;">Member, Game Designer, Team Leader</div>
-                        <div style="font-size: 9pt; color: #3b82f6;">Apr 2023 - Present</div>
+                        <div style="font-weight: 600; font-size: 10pt; color: black;">Member, Game Designer, Team Leader</div>
+                        <div style="font-size: 9pt; color: black; font-weight: 400;">April 2023 - Present</div>
                     </div>
-                    <div style="font-size: 10pt; color: #4b5563; font-style: italic; margin-bottom: 3px;">AGH Code Industry Student Research Group, Kraków</div>
-                    <div style="font-size: 9pt; color: #4b5563; line-height: 1.3; margin-bottom: 5px; text-align: justify;">
+                    <div style="font-size: 9pt; color: black; font-style: italic; margin-bottom: 2px;">AGH Code Industry Student Research Group, Kraków</div>
+                    <div style="font-size: 9pt; color: black; line-height: 1.2; margin-bottom: 3px; text-align: justify;">
                         Active member focused on game development. Design game mechanics, develop programming solutions, 
-                        and lead project teams to create innovative gaming experiences.
-                    </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                        <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Game Design</span>
-                        <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Team Leadership</span>
-                        <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Game Development</span>
+                        and lead project teams to create innovative gaming experiences using industry-standard tools.
                     </div>
                 </div>
             </div>
-        `;
-        
-        rightColumn.appendChild(experienceClone);
-    }
+        </div>
+    `;
+    rightColumn.innerHTML += experienceHTML;
     
-    // Projects Section
-    const projectsSection = document.getElementById('projects');
-    if (projectsSection) {
-        const projectsClone = document.createElement('div');
-        
-        projectsClone.innerHTML = `
-            <h2 style="font-size: 14pt; color: #2563eb; margin: 0 0 10px 0; padding-bottom: 5px; border-bottom: 2px solid #3b82f6;">
+    // Projects Section - Simple list layout
+    const projectsHTML = `
+        <div>
+            <h2 style="font-size: 12pt; color: black; margin: 0 0 6px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd;">
                 Projects
             </h2>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                 <!-- Project 1 -->
-                <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                    <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Heart Attack Risk Detector</div>
-                    <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
-                        AI-powered application that predicts heart attack risk based on user input data. Implements a PyTorch model for risk assessment with an intuitive interface.
+                <div style="padding: 6px 0; font-size: 9pt;">
+                    <div style="font-weight: 600; font-size: 10pt; color: black; margin-bottom: 2px;">Heart Attack Risk Detector</div>
+                    <div style="color: black; line-height: 1.2; margin-bottom: 3px; text-align: justify;">
+                        AI-powered app predicting heart attack risk with PyTorch model and intuitive interface.
                     </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Python</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">PyTorch</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">HTML/CSS/JS</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">WebView</span>
-                    </div>
+                    <div style="font-size: 8pt; color: #666;">Technologies: Python, PyTorch</div>
                 </div>
                 
                 <!-- Project 2 -->
-                <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                    <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Database Management Interface</div>
-                    <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
-                        Web application with robust interface for database operations. Supports basic and advanced database functions through an intuitive UI.
+                <div style="padding: 6px 0; font-size: 9pt;">
+                    <div style="font-weight: 600; font-size: 10pt; color: black; margin-bottom: 2px;">Database Management Interface</div>
+                    <div style="color: black; line-height: 1.2; margin-bottom: 3px; text-align: justify;">
+                        Web app with interface for database operations through intuitive UI.
                     </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">PHP</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">SQL</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">HTML/CSS</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">JavaScript</span>
-                    </div>
+                    <div style="font-size: 8pt; color: #666;">Technologies: PHP, SQL</div>
                 </div>
                 
                 <!-- Project 3 -->
-                <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                    <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">CPM Logistics Calculator</div>
-                    <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
-                        Application for calculating Critical Path Method in logistics. Visualizes results through interactive charts and graphs for efficient project planning.
+                <div style="padding: 6px 0; font-size: 9pt;">
+                    <div style="font-weight: 600; font-size: 10pt; color: black; margin-bottom: 2px;">CPM Logistics Calculator</div>
+                    <div style="color: black; line-height: 1.2; margin-bottom: 3px; text-align: justify;">
+                        App calculating Critical Path Method with interactive charts for project planning.
                     </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Python</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">HTML/CSS/JS</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">WebView</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Data Visualization</span>
-                    </div>
+                    <div style="font-size: 8pt; color: #666;">Technologies: Python, Data Visualization</div>
                 </div>
                 
                 <!-- Project 4 -->
-                <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                    <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Android Paint App</div>
-                    <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
-                        Mobile painting application for Android with fundamental drawing tools and color selection capabilities.
+                <div style="padding: 6px 0; font-size: 9pt;">
+                    <div style="font-weight: 600; font-size: 10pt; color: black; margin-bottom: 2px;">Android Paint App</div>
+                    <div style="color: black; line-height: 1.2; margin-bottom: 3px; text-align: justify;">
+                        Mobile painting app for Android with drawing tools and color selection.
                     </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Kotlin</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Android SDK</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">UI Design</span>
-                    </div>
+                    <div style="font-size: 8pt; color: #666;">Technologies: Kotlin, Android SDK</div>
                 </div>
                 
                 <!-- Project 5 -->
-                <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                    <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">React Calculator</div>
-                    <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
-                        Interactive calculator application developed using React with responsive design and comprehensive mathematical functions.
+                <div style="padding: 6px 0; font-size: 9pt;">
+                    <div style="font-weight: 600; font-size: 10pt; color: black; margin-bottom: 2px;">React Calculator</div>
+                    <div style="color: black; line-height: 1.2; margin-bottom: 3px; text-align: justify;">
+                        Interactive calculator with responsive design and comprehensive functions.
                     </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">React</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">JavaScript</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">CSS</span>
-                    </div>
+                    <div style="font-size: 8pt; color: #666;">Technologies: React, JavaScript</div>
                 </div>
                 
                 <!-- Project 6 -->
-                <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                    <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Logistics Intermediary Calculator</div>
-                    <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
-                        Tool that calculates logistics intermediary method with detailed visualizations of results using graphs and charts.
+                <div style="padding: 6px 0; font-size: 9pt;">
+                    <div style="font-weight: 600; font-size: 10pt; color: black; margin-bottom: 2px;">Logistics Intermediary Calculator</div>
+                    <div style="color: black; line-height: 1.2; margin-bottom: 3px; text-align: justify;">
+                        Tool calculating logistics intermediary method with detailed visualizations.
                     </div>
-                    <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Python</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">HTML/CSS/JS</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">WebView</span>
-                        <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Data Analysis</span>
-                    </div>
+                    <div style="font-size: 8pt; color: #666;">Technologies: Python, Data Analysis</div>
                 </div>
             </div>
-        `;
-        
-        rightColumn.appendChild(projectsClone);
-    }
+        </div>
+    `;
+    rightColumn.innerHTML += projectsHTML;
+    
+    // Add a brief profile statement at the bottom
+    const profileHTML = `
+        <div style="margin-top: 10px; padding: 8px 0; border-top: 1px solid #ddd;">
+            <p style="font-size: 9pt; color: black; line-height: 1.3; margin: 0; text-align: justify;">
+                <strong>Profile:</strong> Motivated Computer Science in Engineering student at AGH University of Science and Technology. I approach projects with professionalism and a strong passion for technology, excelling in teamwork, communication, and problem-solving.
+            </p>
+        </div>
+    `;
+    rightColumn.innerHTML += profileHTML;
     
     // Clear the PDF container and add the new content
     pdfContent.innerHTML = '';

@@ -718,7 +718,7 @@ section:hover h2::after {
   min-height: 3em; /* Add minimum height to ensure descriptions take up similar space */
 }
 
-/* Print styles */
+/* Print styles - Enhanced for better PDF generation */
 @media print {
   @page {
     size: A4;
@@ -729,8 +729,8 @@ section:hover h2::after {
     width: 210mm;
     height: 297mm;
     font-size: 10pt;
-    background-color: white;
-    color: black;
+    background-color: white !important;
+    color: black !important;
   }
 
   body * {
@@ -750,14 +750,26 @@ section:hover h2::after {
     margin: 0;
   }
 
-  nav, footer, .no-print, .dark-mode-toggle, #mobile-menu {
-    display: none;
+  nav, footer, .no-print, .dark-mode-toggle, #mobile-menu, header {
+    display: none !important;
   }
 
   .pdf-content {
     max-height: 290mm;
     overflow: hidden;
     page-break-inside: avoid;
+    margin: 0;
+    padding: 0;
+    background-color: white !important;
+    color: black !important;
+  }
+
+  /* Make sure the fonts are visible */
+  .pdf-content * {
+    font-family: 'Inter', Arial, sans-serif !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
 
