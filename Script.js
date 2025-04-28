@@ -764,11 +764,11 @@ function initCertificatesPagination() {
             const certElement = document.createElement('div');
             certElement.className = 'rounded-xl project-card';
             
-            // Larger layout with more spacing
+            // Updated layout with date in top right corner
             certElement.innerHTML = `
                 <div class="flex justify-between items-center w-full mb-1">
                     <h3 class="font-medium text-gray-800 dark:text-white truncate">${cert.title}</h3>
-                    <p class="text-gray-600 dark:text-gray-400 flex-shrink-0 ml-auto">${cert.year}</p>
+                    <p class="text-gray-600 dark:text-gray-400">${cert.year}</p>
                 </div>
                 <p class="cert-issuer text-gray-600 dark:text-gray-400">${cert.issuer}</p>
             `;

@@ -399,6 +399,16 @@ header {
   transition: var(--transition-smooth);
 }
 
+/* Fix for education section - remove forced center alignment */
+#education .timeline-item {
+  padding-left: 1.25rem;
+  text-align: left; /* Change from center to left alignment */
+}
+
+#education .timeline-item .flex-col {
+  align-items: flex-start; /* Change from center to flex-start */
+}
+
 .timeline-item:hover {
   transform: translateY(-2px);
   border-color: var(--primary);
