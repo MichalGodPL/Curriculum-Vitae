@@ -620,18 +620,42 @@ section:hover h2::after {
 
 /* Project cards with enhanced animations */
 .project-card {
-  background-color: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: var(--transition-smooth);
-  position: relative;
-  overflow: hidden;
   background-color: transparent;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.25rem;
   margin-bottom: 1rem;
   transition: var(--transition-smooth);
+}
+
+.dark .project-card {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Add fixed height for project tags container to ensure vertical alignment */
+.project-card .flex.flex-wrap.gap-2 {
+  min-height: 28px; /* Set minimum height for the tags container */
+  display: flex;
+  align-items: flex-start; /* Align tags at the top */
+}
+
+/* Ensure description consistent height */
+.project-card p {
+  height: auto; /* Changed from 3em to auto */
+  overflow: visible; /* Changed from hidden to visible */
+  display: block; /* Changed from -webkit-box to block */
+  -webkit-line-clamp: unset; /* Removed line clamping */
+  line-clamp: unset; /* Removed line clamping */
+  -webkit-box-orient: unset; /* Removed orientation constraint */
+  margin-bottom: 1rem !important; /* Increased from 0.5rem for better spacing */
+}
+
+/* Ensure project tags wrap properly with consistent height regardless of count */
+.project-tag {
+  margin-bottom: 0.25rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
 }
 
 .project-card:hover {
