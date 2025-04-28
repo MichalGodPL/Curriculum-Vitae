@@ -750,7 +750,7 @@ function initCertificatesPagination() {
     const totalPages = Math.ceil(certificates.length / itemsPerPage);
     let currentPage = 0;
     
-    // Create pages of certificates - ultra-compact format with larger text and no wasted space
+    // Create pages of certificates - larger format with more spacing
     const pages = [];
     for (let i = 0; i < totalPages; i++) {
         const start = i * itemsPerPage;
@@ -764,9 +764,9 @@ function initCertificatesPagination() {
             const certElement = document.createElement('div');
             certElement.className = 'rounded-xl project-card';
             
-            // Ultra compact layout with absolutely zero space under company name and larger text
+            // Larger layout with more spacing
             certElement.innerHTML = `
-                <div class="flex justify-between items-center w-full">
+                <div class="flex justify-between items-center w-full mb-1">
                     <h3 class="font-medium text-gray-800 dark:text-white truncate">${cert.title}</h3>
                     <p class="text-gray-600 dark:text-gray-400 flex-shrink-0 ml-auto">${cert.year}</p>
                 </div>

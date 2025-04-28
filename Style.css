@@ -1018,7 +1018,7 @@ section:hover h2::after {
 /* Certificate section pagination styling */
 .certificates-container {
   position: relative;
-  min-height: 310px; /* Keep container height */
+  min-height: 480px; /* Increased from 450px to provide even more space */
   overflow: hidden;
   padding: 0 !important;
 }
@@ -1120,7 +1120,8 @@ section:hover h2::after {
 }
 
 #certificates .card-hover {
-  padding-bottom: 0.5rem !important; /* Further reduce bottom padding in container */
+  padding-bottom: 1rem !important; /* Increased from 0.25rem */
+  padding-top: 1rem !important; /* Added top padding */
 }
 
 #cert-pagination {
@@ -1257,15 +1258,16 @@ section:hover h2::after {
 
 /* Certificate section - Ultra compact with larger text and zero space below issuer */
 .certificates-container .project-card {
-  margin-bottom: 0.15rem; /* Minimal margin between cards */
+  margin-bottom: 0.8rem; /* Reduced from 1rem for smaller spacing between cards */
   min-height: auto;
-  padding: 0.15rem 0.3rem; /* Even more reduced padding */
+  padding: 0.5rem 0.75rem;
   display: flex;
   flex-direction: column;
+  border-width: 1px;
 }
 
 .certificates-container .project-card:last-child {
-  margin-bottom: 0;
+  margin-bottom: 1rem; /* Slightly reduced from 1.2rem for better spacing */
 }
 
 .certificates-container .project-card h3 {
@@ -1310,7 +1312,8 @@ section:hover h2::after {
 
 /* Eliminate all possible spacing in certificate container */
 #certificates .card-hover {
-  padding-bottom: 0.25rem !important; /* Minimal bottom padding */
+  padding-bottom: 1.2rem !important; /* Increased padding for more space */
+  padding-top: 1.2rem !important;
 }
 
 #cert-pagination {
@@ -1331,4 +1334,24 @@ section:hover h2::after {
 .cert-page-dot.active {
   background-color: var(--primary);
   transform: scale(1.2);
+}
+
+/* Add a new style to add extra margin to the certificate heading */
+#certificates h2 {
+  margin-bottom: 0.8rem !important; /* REDUCED from 2rem to create less space after heading */
+}
+
+/* Add more space before pagination controls */
+#certificates .flex.justify-between {
+  margin-top: 0.8rem !important; /* REDUCED from 1.75rem for slightly less space before controls */
+}
+
+/* Add a new style to add extra margin to the certificate heading */
+#certificates h2 {
+  margin-bottom: 0.8rem !important; /* Add more space after the "Certificates" heading */
+}
+
+/* Add more space before pagination controls */
+#certificates .flex.justify-between {
+  margin-top: 0.8rem !important;
 }
