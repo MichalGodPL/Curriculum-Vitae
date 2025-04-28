@@ -1,49 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize with dark mode
-    if (!document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.add('dark');
-        document.body.classList.add('dark');
-    }
-    
-    // Toggle mobile menu
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when clicking on a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    }
+    // Enforce dark mode only - always ensure dark mode is active
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark');
     
     // Enhanced PDF Download Functionality
     const setupPdfDownload = function() {
-        const pdfButtons = [
-            document.getElementById('pdf-download'),
-            document.getElementById('pdf-download-mobile'),
-            document.getElementById('pdf-download-hero')
-        ];
+        const pdfButton = document.getElementById('pdf-download-hero');
         
-        pdfButtons.forEach(button => {
-            if (button) {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    preparePdfVersion();
-                    
-                    // Give the browser a moment to apply print styles
-                    setTimeout(() => {
-                        window.print();
-                    }, 300);
-                });
-            }
-        });
+        if (pdfButton) {
+            pdfButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                preparePdfVersion();
+                
+                // Give the browser a moment to apply print styles
+                setTimeout(() => {
+                    window.print();
+                }, 300);
+            });
+        }
     };
     
     const preparePdfVersion = function() {
@@ -216,12 +190,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     Interests
                 </h2>
                 <div style="display: flex; flex-wrap: wrap; gap: 5px; padding: 0 0 0 5px;">
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Mobile Development</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Cybersecurity</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Machine Learning</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Photography</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Mountain Hiking</span>
-                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Chess</span>
+                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Mobile Development</span>
+                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">History</span>
+                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Machine Learning</span>
+                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Geography</span>
+                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Programming</span>
+                    <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: transparent; color: #1e40af; border-radius: 4px; border: 1px solid #ffffff;">Biology</span>
                 </div>
             `;
             
@@ -253,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                                <div style="width: 70px; font-size: 9pt; color: #4b5563;">Kotlin</div>
+                                <div style="width: 70px; font-size: 9pt; color: #4b5563;">C++</div>
                                 <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
                                     <div style="width: 85%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
                                 </div>
@@ -271,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                                <div style="width: 70px; font-size: 9pt; color: #4b5563;">C#</div>
+                                <div style="width: 70px; font-size: 9pt; color: #4b5563;">Kotlin</div>
                                 <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
                                     <div style="width: 65%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
                                 </div>
@@ -281,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     <!-- Web Development -->
                     <div style="margin-bottom: 12px;">
-                        <h3 style="font-size: 11pt; font-weight: 600; color: #1f2937; margin: 0 0 8px 0;">Web Development</h3>
+                        <h3 style="font-size: 11pt; font-weight: 600; color: #1f2937; margin: 0 0 8px 0;">Web & Game Dev</h3>
                         <div style="display: flex; flex-wrap: wrap; gap: 5px;">
                             <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
                                 <div style="width: 70px; font-size: 9pt; color: #4b5563;">HTML/CSS</div>
@@ -292,65 +266,66 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
                                 <div style="width: 70px; font-size: 9pt; color: #4b5563;">React</div>
                                 <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
+                                    <div style="width: 80%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
+                                <div style="width: 70px; font-size: 9pt; color: #4b5563;">Unreal</div>
+                                <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
                                     <div style="width: 85%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
                                 </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
                                 <div style="width: 70px; font-size: 9pt; color: #4b5563;">Node.js</div>
                                 <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                    <div style="width: 75%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
-                                </div>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 5px; width: 100%;">
-                                <div style="width: 70px; font-size: 9pt; color: #4b5563;">Angular</div>
-                                <div style="flex-grow: 1; height: 8px; background-color: #e5e7eb; border-radius: 4px;">
-                                    <div style="width: 65%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
+                                    <div style="width: 70%; height: 100%; background: linear-gradient(to right, #3b82f6, #2563eb); border-radius: 4px;"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Mobile and additional skills -->
+                <!-- Technical skills -->
                 <div style="margin-bottom: 12px;">
-                    <h3 style="font-size: 11pt; font-weight: 600; color: #1f2937; margin: 0 0 8px 0;">Mobile & Technologies</h3>
+                    <h3 style="font-size: 11pt; font-weight: 600; color: #1f2937; margin: 0 0 8px 0;">Technical Skills</h3>
                     <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Android SDK</span>
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Jetpack Compose</span>
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Flutter</span>
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">React Native</span>
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Firebase</span>
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">MongoDB</span>
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">SQL</span>
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Git</span>
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">Docker</span>
-                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">CI/CD</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fee2e2; color: #991b1b; border-radius: 20px; border: 1px solid #fecaca;">GitHub</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fee2e2; color: #991b1b; border-radius: 20px; border: 1px solid #fecaca;">Linux & Bash</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #e0e7ff; color: #3730a3; border-radius: 20px; border: 1px solid #c7d2fe;">SQL</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #e0e7ff; color: #3730a3; border-radius: 20px; border: 1px solid #c7d2fe;">MariaDB</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #e0e7ff; color: #3730a3; border-radius: 20px; border: 1px solid #c7d2fe;">Computer Networks</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fef3c7; color: #92400e; border-radius: 20px; border: 1px solid #fde68a;">PyTorch</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fef3c7; color: #92400e; border-radius: 20px; border: 1px solid #fde68a;">AI-Based Tools</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fee2e2; color: #991b1b; border-radius: 20px; border: 1px solid #fecaca;">MS Office</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #fee2e2; color: #991b1b; border-radius: 20px; border: 1px solid #fecaca;">Docker</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #eff6ff; color: #1e40af; border-radius: 4px; border: 1px solid #dbeafe;">REST API</span>
+                        <span style="display: inline-block; font-size: 9pt; padding: 3px 8px; background-color: #dcfce7; color: #166534; border-radius: 20px; border: 1px solid #bbf7d0;">PHP</span>
                     </div>
                 </div>
                 
                 <!-- Soft Skills -->
                 <div style="margin-bottom: 12px;">
                     <h3 style="font-size: 11pt; font-weight: 600; color: #1f2937; margin: 0 0 8px 0;">Soft Skills</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
                         <div style="display: flex; align-items: center; gap: 3px;">
                             <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                            <span style="font-size: 9pt; color: #4b5563;">Problem Solving</span>
+                            <span style="font-size: 9pt; color: #4b5563;">Fast Learning Ability</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 3px;">
                             <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                            <span style="font-size: 9pt; color: #4b5563;">Team Collaboration</span>
+                            <span style="font-size: 9pt; color: #4b5563;">Teamwork Skills</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 3px;">
                             <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                            <span style="font-size: 9pt; color: #4b5563;">Time Management</span>
+                            <span style="font-size: 9pt; color: #4b5563;">Strong Communication</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 3px;">
                             <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                            <span style="font-size: 9pt; color: #4b5563;">Critical Thinking</span>
+                            <span style="font-size: 9pt; color: #4b5563;">Diligence & Commitment</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 3px;">
                             <span style="color: #22c55e; font-size: 10pt;">✓</span>
-                            <span style="font-size: 9pt; color: #4b5563;">Communication</span>
+                            <span style="font-size: 9pt; color: #4b5563;">Creativity & Problem-Solving</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 3px;">
                             <span style="color: #22c55e; font-size: 10pt;">✓</span>
@@ -378,38 +353,36 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- Experience 1 -->
                     <div style="margin-bottom: 10px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div style="font-weight: 600; font-size: 11pt; color: #1f2937;">Android Developer (Internship)</div>
-                            <div style="font-size: 9pt; color: #3b82f6;">June 2022 - Sept 2022</div>
+                            <div style="font-weight: 600; font-size: 11pt; color: #1f2937;">Mathematics Tutor</div>
+                            <div style="font-size: 9pt; color: #3b82f6;">Sept 2023 - Feb 2024</div>
                         </div>
-                        <div style="font-size: 10pt; color: #4b5563; font-style: italic; margin-bottom: 3px;">Mobile App Solutions Inc.</div>
-                        <div style="font-size: 9pt; color: #4b5563; line-height: 1.3; margin-bottom: 5px;">
-                            Developed and maintained Android applications using Kotlin and Jetpack Compose. 
-                            Implemented RESTful API integration and local data persistence using Room database.
+                        <div style="font-size: 10pt; color: #4b5563; font-style: italic; margin-bottom: 3px;">GoStudent, Kraków</div>
+                        <div style="font-size: 9pt; color: #4b5563; line-height: 1.3; margin-bottom: 5px; text-align: justify;">
+                            Provided personalized mathematics tutoring to high school students through the GoStudent E-Learning Platform.
+                            Adapted teaching methods to individual student needs, helping improve problem-solving skills.
                         </div>
                         <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Kotlin</span>
-                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Jetpack Compose</span>
-                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Room</span>
-                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Retrofit</span>
+                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Mathematics</span>
+                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">E-Learning</span>
+                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Teaching</span>
                         </div>
                     </div>
                     
                     <!-- Experience 2 -->
                     <div style="margin-bottom: 10px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div style="font-weight: 600; font-size: 11pt; color: #1f2937;">Student Researcher</div>
-                            <div style="font-size: 9pt; color: #3b82f6;">Oct 2021 - May 2022</div>
+                            <div style="font-weight: 600; font-size: 11pt; color: #1f2937;">Member, Game Designer, Team Leader</div>
+                            <div style="font-size: 9pt; color: #3b82f6;">Apr 2023 - Present</div>
                         </div>
-                        <div style="font-size: 10pt; color: #4b5563; font-style: italic; margin-bottom: 3px;">AGH University of Kraków - Computer Science Department</div>
-                        <div style="font-size: 9pt; color: #4b5563; line-height: 1.3; margin-bottom: 5px;">
-                            Participated in a research project focused on mobile app security analysis. 
-                            Developed tools to detect security vulnerabilities in Android applications.
+                        <div style="font-size: 10pt; color: #4b5563; font-style: italic; margin-bottom: 3px;">AGH Code Industry Student Research Group, Kraków</div>
+                        <div style="font-size: 9pt; color: #4b5563; line-height: 1.3; margin-bottom: 5px; text-align: justify;">
+                            Active member focused on game development. Design game mechanics, develop programming solutions, 
+                            and lead project teams to create innovative gaming experiences.
                         </div>
                         <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Java</span>
-                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Python</span>
-                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Android</span>
-                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Security</span>
+                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Game Design</span>
+                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Team Leadership</span>
+                            <span style="display: inline-block; font-size: 8pt; padding: 2px 6px; background-color: #dbeafe; color: #1e40af; border-radius: 4px;">Game Development</span>
                         </div>
                     </div>
                 </div>
@@ -431,53 +404,83 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                     <!-- Project 1 -->
                     <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Smart Home Controller</div>
-                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt;">
-                            Android application for managing smart home devices with automation and energy monitoring.
+                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Heart Attack Risk Detector</div>
+                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
+                            AI-powered application that predicts heart attack risk based on user input data. Implements a PyTorch model for risk assessment with an intuitive interface.
                         </div>
                         <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">Kotlin</span>
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">MVVM</span>
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">Firebase</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Python</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">PyTorch</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">HTML/CSS/JS</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">WebView</span>
                         </div>
                     </div>
                     
                     <!-- Project 2 -->
                     <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Task Manager Web App</div>
-                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt;">
-                            Collaborative task management with real-time updates and progress tracking.
+                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Database Management Interface</div>
+                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
+                            Web application with robust interface for database operations. Supports basic and advanced database functions through an intuitive UI.
                         </div>
                         <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">React</span>
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">Node.js</span>
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">MongoDB</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">PHP</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">SQL</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">HTML/CSS</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">JavaScript</span>
                         </div>
                     </div>
                     
                     <!-- Project 3 -->
                     <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Fitness Tracker</div>
-                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt;">
-                            Cross-platform mobile app for tracking workouts and health metrics with personalized goals.
+                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">CPM Logistics Calculator</div>
+                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
+                            Application for calculating Critical Path Method in logistics. Visualizes results through interactive charts and graphs for efficient project planning.
                         </div>
                         <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">Flutter</span>
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">Dart</span>
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">Firebase</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Python</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">HTML/CSS/JS</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">WebView</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Data Visualization</span>
                         </div>
                     </div>
                     
                     <!-- Project 4 -->
                     <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
-                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">E-Commerce Platform</div>
-                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt;">
-                            Full-stack solution with product management, shopping cart, and payment integration.
+                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Android Paint App</div>
+                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
+                            Mobile painting application for Android with fundamental drawing tools and color selection capabilities.
                         </div>
                         <div style="display: flex; flex-wrap: wrap; gap: 3px;">
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">C#</span>
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">ASP.NET</span>
-                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: #e0e7ff; color: #4338ca; border-radius: 3px;">Angular</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Kotlin</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Android SDK</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">UI Design</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
+                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">React Calculator</div>
+                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
+                            Interactive calculator application developed using React with responsive design and comprehensive mathematical functions.
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 3px;">
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">React</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">JavaScript</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">CSS</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div style="font-size: 9pt; padding: 8px; background-color: #f9fafb; border-radius: 5px; border-left: 3px solid #3b82f6;">
+                        <div style="font-weight: 600; font-size: 10pt; color: #1f2937; margin-bottom: 3px;">Logistics Intermediary Calculator</div>
+                        <div style="color: #4b5563; line-height: 1.3; margin-bottom: 5px; font-size: 8pt; text-align: justify;">
+                            Tool that calculates logistics intermediary method with detailed visualizations of results using graphs and charts.
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 3px;">
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Python</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">HTML/CSS/JS</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">WebView</span>
+                            <span style="display: inline-block; font-size: 7pt; padding: 1px 5px; background-color: transparent; color: #4b5563; border-radius: 10px; border: 1px solid #ffffff;">Data Analysis</span>
                         </div>
                     </div>
                 </div>
@@ -559,26 +562,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 300);
     
-    // Add dark mode toggle functionality using the new OKLCH color scheme
+    // Remove dark mode toggle functionality entirely
     const createDarkModeToggle = function() {
-        const toggle = document.createElement('div');
-        toggle.className = 'dark-mode-toggle';
-        toggle.innerHTML = '<i class="fas fa-sun"></i>'; // Start with dark mode, so show sun icon
-        document.body.appendChild(toggle);
-        
-        toggle.addEventListener('click', function() {
-            document.documentElement.classList.toggle('dark');
-            document.body.classList.toggle('dark');
-            
-            if (document.documentElement.classList.contains('dark')) {
-                toggle.innerHTML = '<i class="fas fa-sun"></i>';
-            } else {
-                toggle.innerHTML = '<i class="fas fa-moon"></i>';
-            }
-        });
+        // Do nothing - we're removing the toggle completely
     };
-    
-    createDarkModeToggle();
     
     // Enhanced card hover effects with the new color scheme
     const cards = document.querySelectorAll('.card-hover');
@@ -644,4 +631,126 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize PDF download functionality
     setupPdfDownload();
+    
+    // Add interactive background effect
+    const headerSection = document.getElementById('about');
+    const interactiveBlob = document.querySelector('.interactive-blob');
+    
+    if (headerSection && interactiveBlob) {
+        headerSection.addEventListener('mousemove', function(e) {
+            // Calculate mouse position relative to the header
+            const rect = headerSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calculate position as percentage of header dimensions
+            const xPercent = x / rect.width;
+            const yPercent = y / rect.height;
+            
+            // Move the blob slightly based on mouse position (subtle effect)
+            const xOffset = 50 + (xPercent - 0.5) * 20; // +/- 10% from center
+            const yOffset = 50 + (yPercent - 0.5) * 20; // +/- 10% from center
+            
+            // Apply transform with a slight delay for smooth effect
+            interactiveBlob.style.transition = 'transform 0.3s ease-out';
+            interactiveBlob.style.transform = `translate(calc(-${xOffset}%), calc(-${yOffset}%))`;
+        });
+        
+        // Reset blob position when mouse leaves the header
+        headerSection.addEventListener('mouseleave', function() {
+            interactiveBlob.style.transition = 'transform 0.8s ease-out';
+            interactiveBlob.style.transform = 'translate(-50%, -50%)';
+        });
+    }
+    
+    // Create dynamic particles that appear randomly
+    const createRandomParticles = function() {
+        const headerSection = document.getElementById('about');
+        if (!headerSection) return;
+        
+        setInterval(() => {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random position
+            const left = Math.random() * 100;
+            const top = 80 + Math.random() * 20; // Bottom 20% of the header
+            
+            // Random size
+            const size = 2 + Math.random() * 3; // Slightly smaller particles
+            
+            // Apply styles
+            particle.style.left = `${left}%`;
+            particle.style.top = `${top}%`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.opacity = '0';
+            
+            // Make particles darker too
+            particle.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+            
+            // Animation duration and delay
+            const duration = 5 + Math.random() * 5;
+            particle.style.animation = `particleDrift ${duration}s linear forwards`;
+            
+            // Add to DOM
+            headerSection.appendChild(particle);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                if (particle.parentNode === headerSection) {
+                    headerSection.removeChild(particle);
+                }
+            }, duration * 1000);
+        }, 500); // Create new particle every 500ms
+    };
+    
+    // Initialize particle effect
+    createRandomParticles();
+    
+    // Initialize dark hero animation
+    initDarkHeroAnimation();
 });
+
+// Function to initialize the dark hero animation
+function initDarkHeroAnimation() {
+    const matrixColumns = document.querySelectorAll('.matrix-column');
+    
+    // Fill matrix columns with random characters
+    matrixColumns.forEach(column => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789<>/\\|[]{}!@#$%^&*()_+-=';
+        const columnHeight = Math.floor(Math.random() * 15) + 10; // 10-25 characters per column
+        
+        let columnContent = '';
+        for (let i = 0; i < columnHeight; i++) {
+            columnContent += characters.charAt(Math.floor(Math.random() * characters.length)) + '<br>';
+        }
+        
+        column.innerHTML = columnContent;
+    });
+    
+    // Make code lines react to mouse movement
+    const heroSection = document.getElementById('about');
+    const codeLines = document.querySelectorAll('.code-line');
+    
+    if (heroSection) {
+        heroSection.addEventListener('mousemove', function(e) {
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element
+            const y = e.clientY - rect.top;  // y position within the element
+            
+            // Calculate position as percentage
+            const xPercent = x / rect.width;
+            const yPercent = y / rect.height;
+            
+            // Subtle movement of code lines based on mouse position
+            codeLines.forEach((line, index) => {
+                const offsetX = (xPercent - 0.5) * 10; // -5px to 5px
+                const offsetY = (yPercent - 0.5) * 5;  // -2.5px to 2.5px
+                const baseRotation = parseFloat(line.style.getPropertyValue('--rotate') || '0deg');
+                
+                line.style.transform = `translateX(${offsetX}px) translateY(${offsetY}px) rotate(${baseRotation}deg)`;
+            });
+        });
+    }
+}

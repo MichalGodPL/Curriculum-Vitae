@@ -8,7 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -34,52 +33,46 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
 </head>
-<body class="bg-gray-100 dark:bg-true-black font-sans text-gray-800 dark:text-gray-200 transition-colors duration-300">
-    <!-- Navigation -->
-    <nav class="bg-white dark:bg-dark-gray shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-gray-800 dark:text-white animated-text">Moje CV</h1>
-            <div class="hidden md:flex space-x-6">
-                <a href="#education" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition nav-link">Education</a>
-                <a href="#skills" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition nav-link">Skills</a>
-                <a href="#languages" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition nav-link">Languages</a>
-                <a href="#experience" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition nav-link">Experience</a>
-                <a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition nav-link">Projects</a>
-            </div>
-            <div class="flex items-center space-x-4">
-                <button id="pdf-download" class="hidden md:block text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition pdf-btn">
-                    <i class="fas fa-file-pdf mr-1"></i> PDF
-                </button>
-                <button id="menu-toggle" class="md:hidden focus:outline-none">
-                    <i class="fas fa-bars text-gray-600 dark:text-gray-300"></i>
-                </button>
-            </div>
+<body class="bg-true-black font-sans text-gray-200 transition-colors duration-300">
+    <!-- Hero Section with darker theme -->
+    <header id="about" class="dark-hero text-white relative overflow-hidden" 
+            style="background: linear-gradient(to right, #0f172a, #1e293b);">
+        <!-- Digital tech grid background with darker styling -->
+        <div class="digital-grid"></div>
+        <div class="tech-circuit"></div>
+        
+        <!-- Glowing background spheres with reduced opacity -->
+        <div class="glow-sphere" style="width: 400px; height: 400px; top: -100px; right: -100px; opacity: 0.08;"></div>
+        <div class="glow-sphere" style="width: 300px; height: 300px; bottom: -50px; left: -50px; opacity: 0.06;"></div>
+        
+        <!-- Add code line particles -->
+        <div class="coding-particles">
+            <div class="code-line" style="--top: 15%; --left: 5%; --width: 80px; --duration: 12s; --rotate: 5deg;"></div>
+            <div class="code-line" style="--top: 25%; --left: 0%; --width: 120px; --duration: 15s; --delay: 1s; --rotate: -2deg;"></div>
+            <div class="code-line" style="--top: 35%; --left: -5%; --width: 60px; --duration: 10s; --delay: 2s; --rotate: 8deg;"></div>
+            <div class="code-line" style="--top: 45%; --left: 2%; --width: 90px; --duration: 14s; --delay: 3s; --rotate: -5deg;"></div>
+            <div class="code-line" style="--top: 55%; --left: -2%; --width: 70px; --duration: 11s; --delay: 5s; --rotate: 3deg;"></div>
+            <div class="code-line" style="--top: 65%; --left: 5%; --width: 110px; --duration: 13s; --delay: 7s; --rotate: -7deg;"></div>
+            <div class="code-line" style="--top: 75%; --left: 0%; --width: 50px; --duration: 9s; --delay: 9s; --rotate: 10deg;"></div>
+            <div class="code-line" style="--top: 85%; --left: 3%; --width: 100px; --duration: 16s; --delay: 11s; --rotate: -3deg;"></div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-dark-gray px-6 py-4 shadow-inner">
-            <div class="flex flex-col space-y-3">
-                <a href="#education" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Education</a>
-                <a href="#skills" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Skills</a>
-                <a href="#languages" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Languages</a>
-                <a href="#experience" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Experience</a>
-                <a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">Projects</a>
-                <button id="pdf-download-mobile" class="text-left text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition">
-                    <i class="fas fa-file-pdf mr-1"></i> Download PDF
-                </button>
-            </div>
+        
+        <!-- Matrix-like falling characters (subtle effect) -->
+        <div class="matrix-rain">
+            <div class="matrix-column" style="--left: 10%; --duration: 15s; --delay: 0s;"></div>
+            <div class="matrix-column" style="--left: 20%; --duration: 18s; --delay: 1s;"></div>
+            <div class="matrix-column" style="--left: 30%; --duration: 17s; --delay: 2s;"></div>
+            <div class="matrix-column" style="--left: 40%; --duration: 20s; --delay: 3s;"></div>
+            <div class="matrix-column" style="--left: 50%; --duration: 16s; --delay: 4s;"></div>
+            <div class="matrix-column" style="--left: 60%; --duration: 19s; --delay: 5s;"></div>
+            <div class="matrix-column" style="--left: 70%; --duration: 17s; --delay: 6s;"></div>
+            <div class="matrix-column" style="--left: 80%; --duration: 21s; --delay: 7s;"></div>
+            <div class="matrix-column" style="--left: 90%; --duration: 15s; --delay: 8s;"></div>
         </div>
-    </nav>
-
-    <!-- Hero Section - Enhanced with animated background and new color scheme -->
-    <header id="about" class="dark:from-dark-gray dark:to-darker-gray text-white relative overflow-hidden" 
-            style="background: linear-gradient(to right, var(--card), var(--secondary));">
-        <!-- Add animated blob elements -->
-        <div class="morphing-blob"></div>
-        <div class="morphing-blob" style="left: -40px; top: 50%; width: 150px; height: 150px; opacity: 0.4;"></div>
         
         <div class="container mx-auto px-6 py-12 md:py-16 relative z-10">
             <div class="hero-content">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-center slide-down">Michał Szymański</h1>
+                <h1 class="hero-title text-center slide-down">Michał Szymański</h1>
                 <h2 class="text-2xl md:text-3xl mb-6 text-center slide-down delay-200">Frontend Developer</h2>
                 <p class="text-lg mb-8 text-center max-w-3xl mx-auto slide-down delay-300">Pasjonat tworzenia pięknych i funkcjonalnych interfejsów użytkownika z wieloletnim doświadczeniem w technologiach webowych.</p>
                 <div class="flex justify-center gap-4 slide-up delay-400">
@@ -99,8 +92,8 @@
                     <div class="bg-transparent dark:bg-transparent p-6 rounded-lg card-hover">
                         <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 border-b pb-2 dark:border-gray-700">Education</h2>
                         
-                        <div class="space-y-6">
-                            <div class="relative pl-8 timeline-item card-hover">
+                        <div class="mx-auto max-w-md">
+                            <div class="relative timeline-item card-hover">
                                 <div class="flex flex-col">
                                     <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Bachelor's Degree in Computer Science in Engineering</h3>
                                     <div class="text-blue-600 dark:text-blue-400 font-medium">2022 - Present</div>
@@ -130,7 +123,7 @@
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-700 dark:text-gray-300">English</span>
-                                <span class="text-gray-700 dark:text-gray-300">C1</span>>
+                                <span class="text-gray-700 dark:text-gray-300">C1</span>>>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-700 dark:text-gray-300">German</span>
@@ -179,12 +172,12 @@
                         <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 border-b pb-2 dark:border-gray-700">Interests</h2>
                         
                         <div class="flex flex-wrap gap-3">
-                            <span class="px-3 py-1 bg-gray-200 dark:bg-darkest-gray text-gray-700 dark:text-gray-300 rounded-full text-sm skill-tag">Mobile Development</span>
-                            <span class="px-3 py-1 bg-gray-200 dark:bg-darkest-gray text-gray-700 dark:text-gray-300 rounded-full text-sm skill-tag">Cybersecurity</span>
-                            <span class="px-3 py-1 bg-gray-200 dark:bg-darkest-gray text-gray-700 dark:text-gray-300 rounded-full text-sm skill-tag">Machine Learning</span>
-                            <span class="px-3 py-1 bg-gray-200 dark:bg-darkest-gray text-gray-700 dark:text-gray-300 rounded-full text-sm skill-tag">Photography</span>
-                            <span class="px-3 py-1 bg-gray-200 dark:bg-darkest-gray text-gray-700 dark:text-gray-300 rounded-full text-sm skill-tag">Mountain Hiking</span>
-                            <span class="px-3 py-1 bg-gray-200 dark:bg-darkest-gray text-gray-700 dark:text-gray-300 rounded-full text-sm skill-tag">Chess</span>
+                            <span class="px-3 py-1 text-gray-700 dark:text-gray-300 border border-white dark:border-gray-600 bg-transparent rounded-full text-sm">Mobile Development</span>
+                            <span class="px-3 py-1 text-gray-700 dark:text-gray-300 border border-white dark:border-gray-600 bg-transparent rounded-full text-sm">History</span>
+                            <span class="px-3 py-1 text-gray-700 dark:text-gray-300 border border-white dark:border-gray-600 bg-transparent rounded-full text-sm">Machine Learning</span>
+                            <span class="px-3 py-1 text-gray-700 dark:text-gray-300 border border-white dark:border-gray-600 bg-transparent rounded-full text-sm">Geography</span>
+                            <span class="px-3 py-1 text-gray-700 dark:text-gray-300 border border-white dark:border-gray-600 bg-transparent rounded-full text-sm">Programming</span>
+                            <span class="px-3 py-1 text-gray-700 dark:text-gray-300 border border-white dark:border-gray-600 bg-transparent rounded-full text-sm">Biology</span>
                         </div>
                     </div>
                 </section>
@@ -192,23 +185,27 @@
                 <!-- Contact Info (Minimized) -->
                 <section class="mb-8 animate-on-scroll print-only">
                     <div class="bg-transparent dark:bg-transparent p-6 rounded-lg card-hover">
-                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 border-b pb-2 dark:border-gray-700">Kontakt</h2>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 border-b pb-2 dark:border-gray-700">Contact</h2>
                         <div class="grid grid-cols-1 gap-3">
                             <div class="flex items-center">
                                 <i class="fas fa-envelope text-blue-500 mr-3 w-6"></i>
-                                <span class="text-gray-700 dark:text-gray-300">jan.kowalski@example.com</span>
+                                <span class="text-gray-700 dark:text-gray-300">mszymanski@student.agh.edu.pl</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-phone text-blue-500 mr-3 w-6"></i>
-                                <span class="text-gray-700 dark:text-gray-300">+48 123 456 789</span>
+                                <span class="text-gray-700 dark:text-gray-300">+48 731 835 644</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-map-marker-alt text-blue-500 mr-3 w-6"></i>
-                                <span class="text-gray-700 dark:text-gray-300">Warszawa, Polska</span>
+                                <span class="text-gray-700 dark:text-gray-300">Kraków, Polska</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fab fa-linkedin text-blue-500 mr-3 w-6"></i>
-                                <span class="text-gray-700 dark:text-gray-300">linkedin.com/in/jankowalski</span>
+                                <span class="text-gray-700 dark:text-gray-300">linkedin.com/in/Michal-Szymanski-Student</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-github text-blue-500 mr-3 w-6"></i>
+                                <span class="text-gray-700 dark:text-gray-300">github.com/MichalGodPL</span>
                             </div>
                         </div>
                     </div>
@@ -227,64 +224,69 @@
                             <div>
                                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Technical Skills</h3>
                                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                                    <div class="p-3 rounded-lg card-hover">
+                                    <div class="p-3 rounded-lg card-hover bg-transparent dark:bg-transparent">
                                         <h4 class="font-medium text-gray-800 dark:text-white mb-2">Programming Languages</h4>
                                         <div class="flex flex-wrap gap-2">
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Java</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Kotlin</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Python</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">JavaScript</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">C#</span>
+                                            <span class="px-2 py-1 text-blue-700 dark:text-blue-300 border border-blue-400 dark:border-blue-700 rounded-full text-xs">Java</span>
+                                            <span class="px-2 py-1 text-blue-700 dark:text-blue-300 border border-blue-400 dark:border-blue-700 rounded-full text-xs">JavaScript</span>
+                                            <span class="px-2 py-1 text-blue-700 dark:text-blue-300 border border-blue-400 dark:border-blue-700 rounded-full text-xs">Python</span>
+                                            <span class="px-2 py-1 text-blue-700 dark:text-blue-300 border border-blue-400 dark:border-blue-700 rounded-full text-xs">C</span>
+                                            <span class="px-2 py-1 text-blue-700 dark:text-blue-300 border border-blue-400 dark:border-blue-700 rounded-full text-xs">C++</span>
+                                            <span class="px-2 py-1 text-blue-700 dark:text-blue-300 border border-blue-400 dark:border-blue-700 rounded-full text-xs">Kotlin</span>
+                                            <span class="px-2 py-1 text-blue-700 dark:text-blue-300 border border-blue-400 dark:border-blue-700 rounded-full text-xs">PHP</span>
                                         </div>
                                     </div>
                                     
-                                    <div class="p-3 rounded-lg card-hover">
-                                        <h4 class="font-medium text-gray-800 dark:text-white mb-2">Mobile Development</h4>
+                                    <div class="p-3 rounded-lg card-hover bg-transparent dark:bg-transparent">
+                                        <h4 class="font-medium text-gray-800 dark:text-white mb-2">Web Development</h4>
                                         <div class="flex flex-wrap gap-2">
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Android SDK</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Jetpack Compose</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Flutter</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">React Native</span>
+                                            <span class="px-2 py-1 text-green-700 dark:text-green-300 border border-green-400 dark:border-green-700 rounded-full text-xs">HTML</span>
+                                            <span class="px-2 py-1 text-green-700 dark:text-green-300 border border-green-400 dark:border-green-700 rounded-full text-xs">CSS</span>
+                                            <span class="px-2 py-1 text-green-700 dark:text-green-300 border border-green-400 dark:border-green-700 rounded-full text-xs">React</span>
+                                            <span class="px-2 py-1 text-green-700 dark:text-green-300 border border-green-400 dark:border-green-700 rounded-full text-xs">Node.js</span>
+                                            <span class="px-2 py-1 text-green-700 dark:text-green-300 border border-green-400 dark:border-green-700 rounded-full text-xs">Bootstrap</span>
+                                            <span class="px-2 py-1 text-green-700 dark:text-green-300 border border-green-400 dark:border-green-700 rounded-full text-xs">Tailwind CSS</span>
                                         </div>
                                     </div>
                                     
-                                    <div class="p-3 rounded-lg card-hover">
-                                        <h4 class="font-medium text-gray-800 dark:text-white mb-2">Web Technologies</h4>
+                                    <div class="p-3 rounded-lg card-hover bg-transparent dark:bg-transparent">
+                                        <h4 class="font-medium text-gray-800 dark:text-white mb-2">Game Development</h4>
                                         <div class="flex flex-wrap gap-2">
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">HTML/CSS</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">React</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Node.js</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Angular</span>
+                                            <span class="px-2 py-1 text-purple-700 dark:text-purple-300 border border-purple-400 dark:border-purple-700 rounded-full text-xs">Unreal Engine 5</span>
+                                            <span class="px-2 py-1 text-purple-700 dark:text-purple-300 border border-purple-400 dark:border-purple-700 rounded-full text-xs">Blueprints</span>
+                                            <span class="px-2 py-1 text-purple-700 dark:text-purple-300 border border-purple-400 dark:border-purple-700 rounded-full text-xs">Unity</span>
+                                            <span class="px-2 py-1 text-purple-700 dark:text-purple-300 border border-purple-400 dark:border-purple-700 rounded-full text-xs">Game Design</span>
                                         </div>
                                     </div>
                                     
-                                    <div class="p-3 rounded-lg card-hover">
-                                        <h4 class="font-medium text-gray-800 dark:text-white mb-2">Databases</h4>
+                                    <div class="p-3 rounded-lg card-hover bg-transparent dark:bg-transparent">
+                                        <h4 class="font-medium text-gray-800 dark:text-white mb-2">AI & ML</h4>
                                         <div class="flex flex-wrap gap-2">
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">SQL</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">MongoDB</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Firebase</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Room</span>
+                                            <span class="px-2 py-1 text-yellow-700 dark:text-yellow-300 border border-yellow-400 dark:border-yellow-700 rounded-full text-xs">PyTorch</span>
+                                            <span class="px-2 py-1 text-yellow-700 dark:text-yellow-300 border border-yellow-400 dark:border-yellow-700 rounded-full text-xs">TensorFlow</span>
+                                            <span class="px-2 py-1 text-yellow-700 dark:text-yellow-300 border border-yellow-400 dark:border-yellow-700 rounded-full text-xs">AI-Based Tools</span>
+                                            <span class="px-2 py-1 text-yellow-700 dark:text-yellow-300 border border-yellow-400 dark:border-yellow-700 rounded-full text-xs">Data Analysis</span>
                                         </div>
                                     </div>
                                     
-                                    <div class="p-3 rounded-lg card-hover">
+                                    <div class="p-3 rounded-lg card-hover bg-transparent dark:bg-transparent">
                                         <h4 class="font-medium text-gray-800 dark:text-white mb-2">Tools & Platforms</h4>
                                         <div class="flex flex-wrap gap-2">
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Git</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Docker</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">AWS</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Azure</span>
+                                            <span class="px-2 py-1 text-red-700 dark:text-red-300 border border-red-400 dark:border-red-700 rounded-full text-xs">GitHub</span>
+                                            <span class="px-2 py-1 text-red-700 dark:text-red-300 border border-red-400 dark:border-red-700 rounded-full text-xs">Linux</span>
+                                            <span class="px-2 py-1 text-red-700 dark:text-red-300 border border-red-400 dark:border-red-700 rounded-full text-xs">Bash</span>
+                                            <span class="px-2 py-1 text-red-700 dark:text-red-300 border border-red-400 dark:border-red-700 rounded-full text-xs">Docker</span>
+                                            <span class="px-2 py-1 text-red-700 dark:text-red-300 border border-red-400 dark:border-red-700 rounded-full text-xs">MS Office</span>
                                         </div>
                                     </div>
                                     
-                                    <div class="p-3 rounded-lg card-hover">
-                                        <h4 class="font-medium text-gray-800 dark:text-white mb-2">Other</h4>
+                                    <div class="p-3 rounded-lg card-hover bg-transparent dark:bg-transparent">
+                                        <h4 class="font-medium text-gray-800 dark:text-white mb-2">Databases & Networks</h4>
                                         <div class="flex flex-wrap gap-2">
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">CI/CD</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">Agile</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">TDD</span>
-                                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded text-xs">REST API</span>
+                                            <span class="px-2 py-1 text-indigo-700 dark:text-indigo-300 border border-indigo-400 dark:border-indigo-700 rounded-full text-xs">SQL</span>
+                                            <span class="px-2 py-1 text-indigo-700 dark:text-indigo-300 border border-indigo-400 dark:border-indigo-700 rounded-full text-xs">MariaDB</span>
+                                            <span class="px-2 py-1 text-indigo-700 dark:text-indigo-300 border border-indigo-400 dark:border-indigo-700 rounded-full text-xs">Computer Networks</span>
+                                            <span class="px-2 py-1 text-indigo-700 dark:text-indigo-300 border border-indigo-400 dark:border-indigo-700 rounded-full text-xs">Cybersecurity</span>
                                         </div>
                                     </div>
                                 </div>
@@ -296,11 +298,31 @@
                                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                                     <div class="flex items-center space-x-2">
                                         <i class="fas fa-check-circle text-green-500"></i>
+                                        <span class="text-gray-700 dark:text-gray-300">Fast Learning Ability</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span class="text-gray-700 dark:text-gray-300">Teamwork Skills</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span class="text-gray-700 dark:text-gray-300">Strong Communication</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-check-circle text-green-500"></i>
                                         <span class="text-gray-700 dark:text-gray-300">Problem Solving</span>
                                     </div>
                                     <div class="flex items-center space-x-2">
                                         <i class="fas fa-check-circle text-green-500"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Team Collaboration</span>
+                                        <span class="text-gray-700 dark:text-gray-300">Creativity</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span class="text-gray-700 dark:text-gray-300">Diligence & Commitment</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span class="text-gray-700 dark:text-gray-300">Adaptability</span>
                                     </div>
                                     <div class="flex items-center space-x-2">
                                         <i class="fas fa-check-circle text-green-500"></i>
@@ -309,14 +331,6 @@
                                     <div class="flex items-center space-x-2">
                                         <i class="fas fa-check-circle text-green-500"></i>
                                         <span class="text-gray-700 dark:text-gray-300">Critical Thinking</span>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <i class="fas fa-check-circle text-green-500"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Communication</span>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <i class="fas fa-check-circle text-green-500"></i>
-                                        <span class="text-gray-700 dark:text-gray-300">Adaptability</span>
                                     </div>
                                 </div>
                             </div>
@@ -330,40 +344,40 @@
                         <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 border-b pb-2 dark:border-gray-700">Experience</h2>
                         
                         <div class="space-y-8">
-                            <div class="relative pl-8 timeline-item card-hover">
+                            <div class="relative timeline-item card-hover">
                                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                                     <div class="md:col-span-3">
-                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Android Developer (Internship)</h3>
-                                        <div class="text-gray-600 dark:text-gray-400 mb-2">Mobile App Solutions Inc.</div>
-                                        <p class="text-gray-700 dark:text-gray-300">Developed and maintained Android applications using Kotlin and Jetpack Compose. Implemented RESTful API integration and local data persistence using Room database.</p>
+                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Mathematics Tutor</h3>
+                                        <div class="text-gray-600 dark:text-gray-400 mb-2">GoStudent, Kraków</div>
+                                        <p class="text-gray-700 dark:text-gray-300 text-justify">Provided personalized mathematics tutoring to high school students through the GoStudent E-Learning Platform. Adapted teaching methods to individual student needs, helping them improve problem solving skills and mathematical understanding.</p>
                                         <div class="mt-3 flex flex-wrap gap-2">
-                                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Kotlin</span>
-                                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Jetpack Compose</span>
-                                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Room</span>
-                                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Retrofit</span>
+                                            <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Mathematics</span>
+                                            <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">E-Learning</span>
+                                            <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Teaching</span>
+                                            <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Problem Solving</span>
                                         </div>
                                     </div>
                                     <div class="md:text-right md:self-start">
-                                        <div class="text-blue-600 dark:text-blue-400 font-semibold">June 2022 - September 2022</div>
+                                        <div class="text-blue-600 dark:text-blue-400 font-semibold">Sept. 2023 - Feb. 2024</div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="relative pl-8 timeline-item card-hover">
+                            <div class="relative timeline-item card-hover">
                                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                                     <div class="md:col-span-3">
-                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Student Researcher</h3>
-                                        <div class="text-gray-600 dark:text-gray-400 mb-2">AGH University of Kraków - Computer Science Department</div>
-                                        <p class="text-gray-700 dark:text-gray-300">Participated in a research project focused on mobile app security analysis. Developed tools to detect security vulnerabilities in Android applications.</p>
+                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Member, Game Designer, Team Leader</h3>
+                                        <div class="text-gray-600 dark:text-gray-400 mb-2">AGH Code Industry Student Research Group, Kraków</div>
+                                        <p class="text-gray-700 dark:text-gray-300 text-justify">Active member of the research group focused on game development and industry practices. Design game mechanics, develop programming solutions, and lead project teams. Collaborate with other members to create innovative gaming experiences using industry-standard tools and techniques.</p>
                                         <div class="mt-3 flex flex-wrap gap-2">
-                                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Java</span>
-                                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Python</span>
-                                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Android</span>
-                                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Security</span>
+                                            <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Game Design</span>
+                                            <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Team Leadership</span>
+                                            <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Project Management</span>
+                                            <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Game Development</span>
                                         </div>
                                     </div>
                                     <div class="md:text-right md:self-start">
-                                        <div class="text-blue-600 dark:text-blue-400 font-semibold">October 2021 - May 2022</div>
+                                        <div class="text-blue-600 dark:text-blue-400 font-semibold">April 2023 - Present</div>
                                     </div>
                                 </div>
                             </div>
@@ -378,46 +392,66 @@
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="p-4 rounded-lg project-card">
-                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Smart Home Controller</h3>
-                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Android application for managing smart home devices. Features include device control, automation, and energy consumption monitoring.</p>
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Heart Attack Risk Detector</h3>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3 text-justify">AI-powered application that predicts heart attack risk based on user input data. Implements a PyTorch model for risk assessment with an intuitive interface.</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Kotlin</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">MVVM</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Firebase</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Jetpack</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Python</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">PyTorch</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">HTML/CSS/JS</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">WebView</span>
                                 </div>
                             </div>
                             
                             <div class="p-4 rounded-lg project-card">
-                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Task Manager Web App</h3>
-                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Collaborative task management system with real-time updates, user permissions, and progress tracking.</p>
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Database Management Interface</h3>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3 text-justify">Web application with robust interface for database operations Supports basic and advanced database functions through an intuitive UI.</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">React</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Node.js</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">MongoDB</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Socket.io</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">PHP</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">SQL</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">HTML/CSS</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">JavaScript</span>
                                 </div>
                             </div>
                             
                             <div class="p-4 rounded-lg project-card">
-                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Fitness Tracker</h3>
-                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Cross-platform mobile app for tracking workouts, nutrition, and health metrics with personalized goal setting.</p>
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">CPM Logistics Calculator</h3>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3 text-justify">Application for calculating Critical Path Method in logistics Visualizes results through interactive charts and graphs for efficient project planning.</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Flutter</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Dart</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Firebase</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Charts</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Python</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">HTML/CSS/JS</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">WebView</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Data Visualization</span>
                                 </div>
                             </div>
                             
                             <div class="p-4 rounded-lg project-card">
-                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">E-Commerce Platform</h3>
-                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3">Full-stack e-commerce solution with product management, shopping cart, payment integration, and order tracking.</p>
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Android Paint App</h3>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3 text-justify">Mobile painting application for Android with fundamental drawing tools and color selection capabilities.</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">C#</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">ASP.NET</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">SQL Server</span>
-                                    <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded text-xs">Angular</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Kotlin</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Android SDK</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">UI Design</span>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 rounded-lg project-card">
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">React Calculator</h3>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3 text-justify">Interactive calculator application developed using React with responsive design and comprehensive mathematical functions.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">React</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">JavaScript</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">CSS</span>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 rounded-lg project-card">
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Logistics Intermediary Calculator</h3>
+                                <p class="text-gray-700 dark:text-gray-300 text-sm mb-3 text-justify">Tool that calculates logistics intermediary method with detailed visualizations of results using graphs and charts.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Python</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">HTML/CSS/JS</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">WebView</span>
+                                    <span class="px-2 py-1 text-gray-700 dark:text-gray-200 border border-white dark:border-gray-600 rounded-full text-xs">Data Analysis</span>
                                 </div>
                             </div>
                         </div>
@@ -440,23 +474,6 @@
             <!-- PDF content will be generated by JavaScript -->
         </div>
     </main>
-
-    <footer class="bg-dark-gray dark:bg-true-black text-white py-6 print:hidden" 
-            style="background-color: var(--card); color: var(--card-foreground);">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0 slide-up">
-                    <h3 class="text-xl font-bold">Michał Szymański</h3>
-                    <p>Frontend Developer</p>
-                </div>
-                <div class="flex space-x-4 slide-up delay-300">
-                    <a href="#" class="hover:text-blue-400 transition hover-scale"><i class="fab fa-linkedin fa-lg"></i></a>
-                    <a href="#" class="hover:text-blue-400 transition hover-scale"><i class="fab fa-github fa-lg"></i></a>
-                    <a href="#" class="hover:text-blue-400 transition hover-scale"><i class="fab fa-twitter fa-lg"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script src="Script.js"></script>
 </body>
