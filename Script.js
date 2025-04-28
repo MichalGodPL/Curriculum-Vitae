@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize with light mode instead of dark mode
-    if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        document.body.classList.remove('dark');
+    // Initialize with dark mode
+    if (!document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.add('dark');
+        document.body.classList.add('dark');
     }
     
     // Toggle mobile menu
@@ -559,11 +559,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 300);
     
-    // Add dark mode toggle functionality that starts in light mode
+    // Add dark mode toggle functionality using the new OKLCH color scheme
     const createDarkModeToggle = function() {
         const toggle = document.createElement('div');
         toggle.className = 'dark-mode-toggle';
-        toggle.innerHTML = '<i class="fas fa-moon"></i>'; // Light mode initially, so show moon icon
+        toggle.innerHTML = '<i class="fas fa-sun"></i>'; // Start with dark mode, so show sun icon
         document.body.appendChild(toggle);
         
         toggle.addEventListener('click', function() {
@@ -580,17 +580,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     createDarkModeToggle();
     
-    // Enhanced card hover effects
+    // Enhanced card hover effects with the new color scheme
     const cards = document.querySelectorAll('.card-hover');
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             card.style.transform = 'translateY(-8px)';
-            card.style.boxShadow = '0 10px 25px rgba(59, 130, 246, 0.1)';
+            card.style.borderColor = 'var(--primary)';
         });
         
         card.addEventListener('mouseleave', function() {
             card.style.transform = '';
-            card.style.boxShadow = '';
+            card.style.borderColor = '';
         });
     });
     

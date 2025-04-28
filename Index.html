@@ -12,11 +12,11 @@
             theme: {
                 extend: {
                     colors: {
-                        // True black for dark mode
-                        'true-black': '#000000',
-                        'dark-gray': '#121212',
-                        'darker-gray': '#1a1a1a',
-                        'darkest-gray': '#222222'
+                        // Use CSS variables for colors to ensure consistency with the OKLCH scheme
+                        'true-black': 'var(--background)',
+                        'dark-gray': 'var(--card)',
+                        'darker-gray': 'var(--secondary)',
+                        'darkest-gray': 'var(--muted)'
                     }
                 }
             }
@@ -70,8 +70,9 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Enhanced with animated background -->
-    <header id="about" class="bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-dark-gray dark:to-darker-gray text-white relative overflow-hidden">
+    <!-- Hero Section - Enhanced with animated background and new color scheme -->
+    <header id="about" class="dark:from-dark-gray dark:to-darker-gray text-white relative overflow-hidden" 
+            style="background: linear-gradient(to right, var(--card), var(--secondary));">
         <!-- Add animated blob elements -->
         <div class="morphing-blob"></div>
         <div class="morphing-blob" style="left: -40px; top: 50%; width: 150px; height: 150px; opacity: 0.4;"></div>
@@ -440,7 +441,8 @@
         </div>
     </main>
 
-    <footer class="bg-dark-gray dark:bg-true-black text-white py-6 print:hidden">
+    <footer class="bg-dark-gray dark:bg-true-black text-white py-6 print:hidden" 
+            style="background-color: var(--card); color: var(--card-foreground);">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0 slide-up">

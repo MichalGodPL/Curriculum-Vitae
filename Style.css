@@ -3,25 +3,81 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Minimalist dark theme palette inspired by shadcn/ui */
+/* Updated color palette using OKLCH values */
 :root {
-  --background: #09090b;
-  --foreground: #a1a1aa;
-  --card: #09090b; /* Match background for true shadcn/ui look */
-  --card-foreground: #e4e4e7;
-  --primary: #18181b;
-  --primary-foreground: #fafafa;
-  --muted: #18181b;
-  --muted-foreground: #71717a;
-  --border: #27272a; /* Lighter border like shadcn/ui */
-  --ring: #27272a;
-  --radius: 0.5rem;
-  --input: #18181b;
+  --radius: 1rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.21 0.006 285.885);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.705 0.015 286.067);
+  
+  /* Preserving existing transition properties */
   --shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   --transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.92 0.004 286.32);
+  --primary-foreground: oklch(0.21 0.006 285.885);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.552 0.016 285.938);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
 body {
@@ -106,7 +162,7 @@ body {
 
 /* Navbar styling with enhanced animations */
 nav {
-  background-color: rgba(9, 9, 11, 0.8); /* Matched to background */
+  background-color: var(--background);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(8px);
   transform: translateY(0);
@@ -116,7 +172,7 @@ nav {
 }
 
 nav.scrolled {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px var(--border);
   transform: translateY(-2px);
 }
 
@@ -135,7 +191,7 @@ nav .nav-link::after {
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: var(--card-foreground);
+  background-color: var(--accent-foreground);
   transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -168,7 +224,7 @@ header {
 
 /* Card styling with hover effects */
 .card {
-  background-color: var(--background); /* Match background */
+  background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: var(--transition-smooth), border-color 0.3s ease;
@@ -176,7 +232,7 @@ header {
 
 .card:hover {
   transform: translateY(-2px);
-  border-color: var(--foreground);
+  border-color: var(--primary);
 }
 
 /* Timeline styling with animated elements */
@@ -184,6 +240,12 @@ header {
   position: relative;
   padding-left: 20px;
   transition: var(--transition-smooth);
+  padding: 1.25rem;
+  padding-left: 2.5rem;
+  margin-bottom: 1.25rem;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
 
 .timeline-item:hover {
@@ -203,7 +265,7 @@ header {
 }
 
 .timeline-item:hover::before {
-  background: var(--card-foreground);
+  background: var(--primary);
   transform: scale(1.2);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
 }
@@ -226,7 +288,7 @@ header {
 
 /* Skill tags with hover animation */
 .skill-tag {
-  background-color: var(--background); /* Match background */
+  background-color: var(--muted);
   color: var(--muted-foreground);
   border-radius: calc(var(--radius) / 2);
   padding: 0.25rem 0.5rem;
@@ -237,7 +299,8 @@ header {
 
 .skill-tag:hover {
   transform: translateY(-2px);
-  border-color: var(--foreground);
+  border-color: var(--primary);
+  background-color: var(--accent);
 }
 
 /* Skill progress bars with animation */
@@ -298,6 +361,11 @@ header {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
 
 .skill-category h3 {
@@ -337,7 +405,7 @@ header {
   font-weight: 500;
   border-radius: var(--radius);
   background-color: var(--background);
-  color: var(--card-foreground);
+  color: var(--foreground);
   border: 1px solid var(--border);
   transition: var(--transition-bounce);
   height: 40px;
@@ -352,14 +420,15 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: var(--accent-foreground / 0.05);
   transform: translateX(-100%);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .button:hover {
   transform: translateY(-2px);
-  border-color: var(--foreground);
+  border-color: var(--primary);
+  background-color: var(--accent);
 }
 
 .button:active {
@@ -373,7 +442,7 @@ header {
 }
 
 .button-outline:hover {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 /* Section styling with subtle entrance animations */
@@ -414,8 +483,8 @@ section:hover h2::after {
   width: 40px;
   height: 40px;
   border-radius: var(--radius);
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--card);
+  color: var(--card-foreground);
   border: 1px solid var(--border);
   display: flex;
   justify-content: center;
@@ -426,22 +495,29 @@ section:hover h2::after {
 }
 
 .dark-mode-toggle:hover {
-  border-color: var(--foreground);
+  border-color: var(--primary);
+  background-color: var(--accent);
 }
 
 /* Project cards with enhanced animations */
 .project-card {
-  background-color: var(--background); /* Match background */
+  background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: var(--transition-smooth);
 }
 
 .project-card:hover {
   transform: translateY(-3px);
-  border-color: var(--foreground);
+  border-color: var(--primary);
 }
 
 .project-card::before {
@@ -461,7 +537,7 @@ section:hover h2::after {
 }
 
 .project-card:hover .project-title {
-  color: var(--card-foreground);
+  color: var(--primary);
 }
 
 .project-description {
@@ -477,7 +553,7 @@ section:hover h2::after {
 }
 
 .project-tag {
-  background-color: var(--background); /* Match background */
+  background-color: var(--muted);
   color: var(--muted-foreground);
   border-radius: calc(var(--radius) / 2);
   padding: 0.125rem 0.375rem;
@@ -488,22 +564,8 @@ section:hover h2::after {
 
 .project-tag:hover {
   transform: translateY(-1px);
-  border-color: var(--foreground);
-}
-
-/* Creative header */
-.creative-header {
-  padding: 1rem;
-  border-radius: var(--radius);
-  background: var(--background); /* Match background */
-  border: 1px solid var(--border);
-}
-
-.creative-header h1 {
-  color: var(--card-foreground);
-  font-weight: 500;
-  font-size: 1.25rem;
-  letter-spacing: -0.025em;
+  border-color: var(--primary);
+  background-color: var(--accent);
 }
 
 /* Print styles */
@@ -582,12 +644,12 @@ section:hover h2::after {
   transition: var(--transition-smooth);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background-color: var(--background);
+  background-color: var(--card);
 }
 
 .card-hover:hover {
   transform: translateY(-2px);
-  border-color: var(--foreground);
+  border-color: var(--primary);
 }
 
 /* Animated border effect */
@@ -614,4 +676,83 @@ section:hover h2::after {
   bottom: -2px;
   border-color: var(--foreground);
   opacity: 0.3;
+}
+
+/* Add a new style for inner cards with consistent background and spacing */
+.card-inner {
+  background-color: transparent !important; /* Same as parent */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.dark .card-inner {
+  background-color: transparent !important; /* Same as parent */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Thin white border in dark mode */
+}
+
+.card-inner:hover {
+  transform: translateY(-2px);
+  border-color: var(--foreground);
+}
+
+/* Improve spacing for all section contents */
+.section-content {
+  margin-top: 1.5rem;
+}
+
+/* Add proper spacing for skills categories */
+.skill-category {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.dark .skill-category {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Improve spacing for project cards */
+.project-card {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.dark .project-card {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Update certificate items spacing */
+.certificate-item {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.dark .certificate-item {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Add spacing to timeline items */
+.timeline-item {
+  padding: 1.25rem;
+  padding-left: 2.5rem;
+  margin-bottom: 1.25rem;
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.dark .timeline-item {
+  border-color: rgba(255, 255, 255, 0.1);
 }
