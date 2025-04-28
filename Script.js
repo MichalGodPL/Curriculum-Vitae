@@ -710,7 +710,132 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize dark hero animation
     initDarkHeroAnimation();
+
+    // Initialize Certificates Pagination
+    initCertificatesPagination();
 });
+
+// Initialize the certificates pagination
+function initCertificatesPagination() {
+    const certificates = [
+        { title: "Building AI Powered Chatbots Without Programming", issuer: "IBM", year: "2024" },
+        { title: "Introduction to Packet Tracer", issuer: "Cisco", year: "2024" },
+        { title: "Introduction to Containers w/ Docker, Kubernetes & OpenShift", issuer: "IBM", year: "2023" },
+        { title: "Get Started with Python", issuer: "Google", year: "2023" },
+        { title: "Python for Data Science, AI & Development", issuer: "IBM", year: "2023" },
+        { title: "HTML and CSS in Depth", issuer: "Meta", year: "2023" },
+        { title: "Programming in Python", issuer: "Meta", year: "2023" },
+        { title: "Programming with Java Script", issuer: "Meta", year: "2023" },
+        { title: "React Basics", issuer: "Meta", year: "2023" },
+        { title: "Introduction to Front-End Development", issuer: "Meta", year: "2023" },
+        { title: "Work Smarter with Microsoft Excel", issuer: "Microsoft", year: "2023" },
+        { title: "Artificial Intelligence Fundamentals", issuer: "IBM", year: "2023" },
+        { title: "Introduction to Cybersecurity", issuer: "Cisco", year: "2023" },
+        { title: "JavaScript Essentials 1", issuer: "Cisco", year: "2023" },
+        { title: "Python 101 for Data Science", issuer: "IBM", year: "2023" },
+        { title: "Web Development Fundamentals", issuer: "IBM", year: "2023" },
+        { title: "Certyfikat Umiejętności Jutra", issuer: "Google", year: "2023" },
+        { title: "Google Associate Android Developer", issuer: "Google", year: "2022" },
+        { title: "Azure Fundamentals AZ-900", issuer: "Microsoft", year: "2021" },
+        { title: "TOEIC - 925 points", issuer: "ETS", year: "2020" }
+    ];
+    
+    const certificatesContainer = document.getElementById('certificates-container');
+    const prevButton = document.getElementById('prev-cert');
+    const nextButton = document.getElementById('next-cert');
+    const paginationContainer = document.getElementById('cert-pagination');
+    
+    if (!certificatesContainer || !prevButton || !nextButton || !paginationContainer) return;
+    
+    const itemsPerPage = 4;
+    const totalPages = Math.ceil(certificates.length / itemsPerPage);
+    let currentPage = 0;
+    
+    // Create pages of certificates
+    const pages = [];
+    for (let i = 0; i < totalPages; i++) {
+        const start = i * itemsPerPage;
+        const pageItems = certificates.slice(start, start + itemsPerPage);
+        
+        const pageElement = document.createElement('div');
+        pageElement.className = `certificate-page ${i === 0 ? 'active' : i < 0 ? 'prev' : 'next'}`;
+        pageElement.dataset.page = i;
+        
+        pageItems.forEach(cert => {
+            const certElement = document.createElement('div');
+            certElement.className = 'p-3 rounded-xl project-card';
+            certElement.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white my-auto">${cert.title}</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm my-auto ml-2">${cert.year}</p>
+                </div>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">${cert.issuer}</p>
+            `;
+            pageElement.appendChild(certElement);
+        });
+        
+        pages.push(pageElement);
+        certificatesContainer.appendChild(pageElement);
+    }
+    
+    // Create pagination dots
+    for (let i = 0; i < totalPages; i++) {
+        const dot = document.createElement('div');
+        dot.className = `cert-page-dot ${i === 0 ? 'active' : ''}`;
+        dot.dataset.page = i;
+        dot.addEventListener('click', () => {
+            goToPage(i);
+        });
+        paginationContainer.appendChild(dot);
+    }
+    
+    // Update button states
+    updateButtons();
+    
+    // Add button event listeners
+    prevButton.addEventListener('click', () => {
+        if (currentPage > 0) {
+            goToPage(currentPage - 1);
+        }
+    });
+    
+    nextButton.addEventListener('click', () => {
+        if (currentPage < totalPages - 1) {
+            goToPage(currentPage + 1);
+        }
+    });
+    
+    // Function to navigate to a specific page
+    function goToPage(pageIndex) {
+        if (pageIndex < 0 || pageIndex >= totalPages) return;
+        
+        // Update page classes
+        pages.forEach((page, index) => {
+            if (index === pageIndex) {
+                page.className = 'certificate-page active';
+            } else if (index < pageIndex) {
+                page.className = 'certificate-page prev';
+            } else {
+                page.className = 'certificate-page next';
+            }
+        });
+        
+        // Update pagination dots
+        const dots = paginationContainer.querySelectorAll('.cert-page-dot');
+        dots.forEach((dot, index) => {
+            dot.className = `cert-page-dot ${index === pageIndex ? 'active' : ''}`;
+        });
+        
+        currentPage = pageIndex;
+        updateButtons();
+    }
+    
+    // Update button states based on current page
+    function updateButtons() {
+        prevButton.disabled = currentPage === 0;
+        nextButton.disabled = currentPage === totalPages - 1;
+    }
+}
 
 // Function to initialize the dark hero animation
 function initDarkHeroAnimation() {
